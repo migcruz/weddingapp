@@ -17,13 +17,18 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from django.views.generic import TemplateView
 from rest_framework import routers
-from todo import views
+from todo import views as todoViews
+from guestlist import views as guestlistViews
+
+guest_detail = guestlistViews.GuestlistView.as_view({'get':'retrieve'})
 
 router = routers.DefaultRouter()
-router.register(r'todos', views.TodoView, 'todo')
+router.register(r'todos', todoViews.TodoView, 'todo')
+router.register(r'guestlist', guestlistViews.GuestlistView, 'guestlist')
 
 urlpatterns = [
     path('admin/', admin.site.urls),         
     path('api/', include(router.urls)),
+    path('api/guestlist/<token>/', guest_detail, name='guest-detail'),
     re_path('.*', TemplateView.as_view(template_name='index.html')),
 ]

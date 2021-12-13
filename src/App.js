@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Modal from "./components/Modal";
+import GuestInfoModal from "./components/GuestInfoModal";
+import TokenModal from "./components/TokenModal";
 import axios from "axios";
 import { Image, Item, Grid, Container, Header } from "semantic-ui-react";
 
@@ -18,13 +19,27 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            viewCompleted: false,
+            viewRsvp: false,
             activeItem: {
-                title: "",
-                description: "",
-                completed: false
+                id: "",
+                token: "",
+                firstName: "",
+                lastName: "",
+                email: "",
+                phone: "",
+                allergies: "",
+                rsvp: false,
+                vegan: false,
+                vegetarian: false,
+                url: "",
             },
-            todoList: []
+            guestList: [],
+            guestToken: {
+                guestToken: "",
+            },
+            currentGuest: {},
+            guestInfoModalShow: false,
+            tokenModalShow: false,
         };
     }
 
@@ -34,43 +49,43 @@ class App extends Component {
 
     refreshList = () => {
         axios
-            // .get("http://localhost:8000/api/todos/")
+            // .get("http://localhost:8000/api/guestList/")
             // Because of proxy in package.json, command be shorten as follows:
-            .get("/api/todos/")
-            .then(res => this.setState({ todoList: res.data }))
+            .get("/api/guestlist/")
+            .then(res => this.setState({ guestList: res.data }))
             .catch(err => console.log(err));
     };
 
-    displayCompleted = status => {
+    displayRsvp = status => {
         if (status) {
-            return this.setState({ viewCompleted: true });
+            return this.setState({ viewRsvp: true });
         }
-        return this.setState({ viewCompleted: false });
+        return this.setState({ viewRsvp: false });
     };
 
     renderTabList = () => {
         return (
             <div className="my-5 tab-list">
                 <span
-                    onClick={() => this.displayCompleted(true)}
-                    className={this.state.viewCompleted ? "active" : ""}
+                    onClick={() => this.displayRsvp(true)}
+                    className={this.state.viewRsvp ? "active" : ""}
                 >
-                    Complete
+                    Rsvp
             </span>
                 <span
-                    onClick={() => this.displayCompleted(false)}
-                    className={this.state.viewCompleted ? "" : "active"}
+                    onClick={() => this.displayRsvp(false)}
+                    className={this.state.viewRsvp ? "" : "active"}
                 >
-                    Incomplete
+                    No Rsvp
             </span>
             </div>
         );
     };
     
     renderItems = () => {
-        const { viewCompleted } = this.state;
-        const newItems = this.state.todoList.filter(
-            item => item.completed === viewCompleted
+        const { viewRsvp } = this.state;
+        const newItems = this.state.guestList.filter(
+            item => item.rsvp === viewRsvp
         );
         return newItems.map(item => (
             <li
@@ -78,11 +93,11 @@ class App extends Component {
                 className="list-group-item d-flex justify-content-between align-items-center"
             >
                 <span
-                    className={`todo-title mr-2 ${this.state.viewCompleted ? "completed-todo" : ""
+                    className={`todo-title mr-2 ${this.state.viewRsvp ? "completed-todo" : ""
                         }`}
-                    title={item.description}
+                    title={item.token}
                 >
-                    {item.title}
+                    {item.firstName} {item.lastName} {item.token} {item.email} {item.phone} {item.allergies}
                 </span>
                 <span>
                     <button
@@ -103,7 +118,11 @@ class App extends Component {
     };
 
     toggle = () => {
-        this.setState({ modal: !this.state.modal });
+        this.setState({ guestInfoModalShow: !this.state.guestInfoModalShow });
+    };
+
+    tokenModalToggle = () => {
+        this.setState({ tokenModalShow: !this.state.tokenModalShow });
     };
 
     handleSubmit = item => {
@@ -111,36 +130,64 @@ class App extends Component {
         if (item.id) {
             axios
                 // Because of proxy in package.json, command be shorten as follows:
-                // .put(`http://localhost:8000/api/todos/${item.id}/`, item)
-                .put(`/api/todos/${item.id}/`, item)
+                // .put(`http://localhost:8000/api/guestlist/${item.id}/`, item)
+                .put(`/api/guestlist/${item.token}/`, item)
                 .then(res => this.refreshList());
             return;
         }
         axios
             // Because of proxy in package.json, command be shorten as follows:
-            // .post("http://localhost:8000/api/todos/", item)
-            .post("/api/todos/", item)
+            // .post("http://localhost:8000/api/guestlist/", item)
+            .post("/api/guestlist/", item)
             .then(res => this.refreshList());
+    };
+
+    handleTokenModalSubmit = token => {
+        this.tokenModalToggle();
+        axios
+            // .get("http://localhost:8000/api/guestlist/ABCD4/")
+            // Because of proxy in package.json, command be shorten as follows:
+            .get(`/api/guestlist/${token.guestToken}/`)
+            .then(res => this.setState({ currentGuest: res.data, activeItem: res.data, guestToken: token }, () => {
+                console.log('waiting: ', this.state.activeItem);
+                this.toggle();
+            }))
+            .catch(err => console.log(err));
+        
+        // this.setState({ guestToken: token }, () => {
+
+        //     console.log('waiting: ', this.state.activeItem);
+        // });
+        
+        // TODO: Error handling of bad token
     };
 
     handleDelete = item => {
         axios
             // Because of proxy in package.json, command be shorten as follows:
-            // .delete(`http://localhost:8000/api/todos/${item.id}`)
-            .delete(`/api/todos/${item.id}/`)
+            // .delete(`http://localhost:8000/api/guestlist/${item.id}`)
+            .delete(`/api/guestlist/${item.token}/`)
             .then(res => this.refreshList());
     };
 
     createItem = () => {
-        const item = { title: "", description: "", completed: false };
-        this.setState({ activeItem: item, modal: !this.state.modal });
+        const item = { id: "", token: "", firstName: "", lastName: "", email: "", phone: "", allergies: "", rsvp: false, vegan: false, vegetarian: false, url: "" };
+        this.setState({ activeItem: item, guestInfoModalShow: !this.state.guestInfoModalShow });
     };
 
     editItem = item => {
-        this.setState({ activeItem: item, modal: !this.state.modal });
+        this.setState({ activeItem: item, guestInfoModalShow: !this.state.guestInfoModalShow });
+    };
+
+    verifyToken = () => {
+        const token = { guestToken: "" };
+        this.setState({ guestToken: token, tokenModalShow: !this.state.tokenModalShow });
     };
 
     render() {
+        console.log(this.state.currentGuest)
+        console.log('In Render')
+        console.log(this.state.activeItem)
         return (
             <main className="content">
                 <Image className="App-headribbonimage" src={photo_paths[0].value[1]}/>
@@ -164,6 +211,9 @@ class App extends Component {
                                 <button onClick={this.createItem} className="btn btn-primary">
                                     Add task
                                 </button>
+                                <button onClick={this.verifyToken} className="btn btn-primary">
+                                    Enter your Token
+                                </button>
                             </div>
                             {this.renderTabList()}
                             <ul className="list-group list-group-flush">
@@ -172,11 +222,18 @@ class App extends Component {
                         </div>
                     </div>
                 </div>
-                {this.state.modal ? (
-                    <Modal
+                {this.state.guestInfoModalShow ? (
+                    <GuestInfoModal
                         activeItem={this.state.activeItem}
                         toggle={this.toggle}
                         onSave={this.handleSubmit}
+                    />
+                ) : null}
+                {this.state.tokenModalShow ? (
+                    <TokenModal
+                        activeItem={this.state.guestToken}
+                        toggle={this.tokenModalToggle}
+                        onSave={this.handleTokenModalSubmit}
                     />
                 ) : null}
             </main>
