@@ -21,10 +21,10 @@ const photo_paths = [
 const HeaderButton = styled(Button)({
     boxShadow: 'none',
     textTransform: 'none',
-    fontSize: 30,
+    fontSize: '70%',
     fontWeight: '100',
     color: 'hsla(0, 0%, 100%, 1)', //Font color
-    padding: '24px 96px',
+    padding: '1em 4em',  //em is relative to font size
     border: '1px solid',
     borderRadius: '1px',
     lineHeight: 1.5,

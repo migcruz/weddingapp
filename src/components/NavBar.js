@@ -10,13 +10,13 @@ const NavBarBox = styled(Box)({
     borderRadius: '1px',
     backgroundColor: 'hsla(0, 0%, 100%, 0.15)',
     borderColor: 'hsla(0, 0%, 100%, 1)',
-    padding: '24px 96px',
+    padding: '0.5em',
 });
 
 const NavBarTab = styled(Tab)({
     color: 'hsla(0, 0%, 100%, 1)', //Font color
-    padding: '24px 96px',
-    fontSize: 18,
+    padding: '1em 4em',
+    fontSize: '35%',
     fontWeight: '100',
     '&:hover': {
         backgroundColor: 'hsla(0, 0%, 100%, 0.50)',
