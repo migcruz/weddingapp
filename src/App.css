@@ -23,7 +23,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 2.5vmin;
   color: white;
   position: absolute;
   top: 50%;
@@ -42,13 +42,13 @@
 }
 
 .App-h1 {
-  font-size: calc(60px + 12vmin);
+  font-size: 16vmin;
   color: white;
   font-family: "DomLovesMary Pro";
 }
 
 .App-h2 {
-  font-size: calc(10px + 2vmin);
+  font-size: 3vmin;
   color: white;
   font-family: "Times New Roman";
   font-weight: lighter;
