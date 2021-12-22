@@ -32,14 +32,40 @@
 }
 
 .App-headribbonimage {
-  min-height: 100vh;
-  max-height: 100vh;
   min-width: 100vw;
   max-width: 100vw;
+  opacity: 0.5;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.App-h1 {
+  font-size: calc(60px + 12vmin);
+  color: white;
+  font-family: "DomLovesMary Pro";
+}
+
+.App-h2 {
+  font-size: calc(10px + 2vmin);
+  color: white;
+  font-family: "Times New Roman";
+  font-weight: lighter;
+}
+
+.App-navbar {
+  min-width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 5%;
+}
+
+.App-rsvpbutton {
+  position: absolute;
+  top: 72%;
 }
 
 @keyframes App-logo-spin {
@@ -50,5 +76,14 @@
     transform: rotate(360deg);
   }
 }
+
+/* fonts */
+@import url(//db.onlinewebfonts.com/c/25f19424a5fb75023182a80c61dffc37?family=DomLovesMary+Pro);
+
+@font-face {
+  font-family: "DomLovesMary Pro";
+  src: url("//db.onlinewebfonts.com/t/25f19424a5fb75023182a80c61dffc37.eot");
+  src: url("//db.onlinewebfonts.com/t/25f19424a5fb75023182a80c61dffc37.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/25f19424a5fb75023182a80c61dffc37.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/25f19424a5fb75023182a80c61dffc37.woff") format("woff"), url("//db.onlinewebfonts.com/t/25f19424a5fb75023182a80c61dffc37.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/25f19424a5fb75023182a80c61dffc37.svg#DomLovesMary Pro") format("svg");
+} 
 
 /* vh is percentage of browser vertical height this element will take up */

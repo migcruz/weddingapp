@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import GuestInfoModal from "./components/GuestInfoModal";
 import TokenModal from "./components/TokenModal";
+import NavBar from "./components/NavBar";
 import axios from "axios";
 import { Image, Item, Grid, Container, Header } from "semantic-ui-react";
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
 
 import './App.css';
 
@@ -11,8 +14,40 @@ axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 // const staticRoot = window.django.urls.staticRoot;
 const photo_paths = [
-    {key: "photo1", value: ["photo1", "/static/photo1.jpg"]}
+    {key: "photo1", value: ["photo1", "/static/photo1.jpg"]},
+    {key: "photo2", value: ["photo2", "/static/bgphoto.png"]}
 ];
+
+const HeaderButton = styled(Button)({
+    boxShadow: 'none',
+    textTransform: 'none',
+    fontSize: 30,
+    fontWeight: '100',
+    color: 'hsla(0, 0%, 100%, 1)', //Font color
+    padding: '24px 96px',
+    border: '1px solid',
+    borderRadius: '1px',
+    lineHeight: 1.5,
+    backgroundColor: 'hsla(0, 0%, 100%, 0.15)',
+    borderColor: 'hsla(0, 0%, 100%, 1)',
+    // fontFamily: [
+    //     'Times New Roman',
+    // ].join(','),
+    '&:hover': {
+        backgroundColor: 'hsla(0, 50%, 70%, 0.7)',
+        borderColor: 'hsla(0, 0%, 100%, 1)',
+        color: 'hsla(0, 0%, 10%, 1)',
+        boxShadow: 'none',
+    },
+    '&:active': {
+        boxShadow: 'none',
+        backgroundColor: 'hsla(0, 50%, 70%, 0.7)',
+        borderColor: 'hsla(0, 0%, 100%, 1)',
+    },
+    '&:focus': {
+        boxShadow: '0 0 0 0.2rem rgba(217,140,140,.7)',
+    },
+});
 
 class App extends Component {
 
@@ -100,18 +135,18 @@ class App extends Component {
                     {item.firstName} {item.lastName} {item.token} {item.email} {item.phone} {item.allergies}
                 </span>
                 <span>
-                    <button
+                    <Button
                         onClick={() => this.editItem(item)}
                         className="btn btn-secondary mr-2"
                     >
                         Edit
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                         onClick={() => this.handleDelete(item)}
                         className="btn btn-danger"
                     >
                         Delete
-                    </button>
+                    </Button>
                 </span>
             </li>
         ));
@@ -190,11 +225,21 @@ class App extends Component {
         console.log(this.state.activeItem)
         return (
             <main className="content">
-                <Image className="App-headribbonimage" src={photo_paths[0].value[1]}/>
+                <Image className="App-headribbonimage" src={photo_paths[1].value[1]}/>
                 <div className="App-headribbon">
-                    <Header as="h1" className="App-header">Welcome to Miguel and Jessica's Wedding!</Header>
-                    <Header as="h2">Save the date: August 20, 2022</Header>
-                    <Header as="h4">Please scroll down to RSVP</Header>
+                    <div className="App-navbar">
+                        <NavBar/>
+                    </div>
+                    <h1 className="App-h1">Miguel & Jessica</h1>
+                    <h2 className="App-h2">08.20.22</h2>
+                    <div className="App-rsvpbutton">
+                        <HeaderButton variant="contained" size="large" onClick={this.createItem}>
+                            Add task
+                        </HeaderButton>
+                        <HeaderButton variant="contained" size="large" onClick={this.verifyToken}>
+                            RSVP
+                        </HeaderButton>
+                    </div>
                 </div>
                 <Container text>
                     <p>
@@ -207,14 +252,6 @@ class App extends Component {
                 <div className="row ">
                     <div className="col-md-6 col-sm-10 mx-auto p-0">
                         <div className="card p-3">
-                            <div className="">
-                                <button onClick={this.createItem} className="btn btn-primary">
-                                    Add task
-                                </button>
-                                <button onClick={this.verifyToken} className="btn btn-primary">
-                                    Enter your Token
-                                </button>
-                            </div>
                             {this.renderTabList()}
                             <ul className="list-group list-group-flush">
                                 {this.renderItems()}
