@@ -19,6 +19,7 @@ const photo_paths = [
 ];
 
 const HeaderButton = styled(Button)({
+    position: 'relative', //use for multiple items in div or else they will stack
     boxShadow: 'none',
     textTransform: 'none',
     fontSize: '70%',
@@ -230,8 +231,12 @@ class App extends Component {
                     <div className="App-navbar">
                         <NavBar/>
                     </div>
-                    <h1 className="App-h1">Miguel & Jessica</h1>
-                    <h2 className="App-h2">08.20.22</h2>
+                    <div className="App-headribbonh1">
+                        <h1 className="App-h1">Miguel & Jessica</h1>
+                    </div>
+                    <div className="App-headribbonh2">
+                        <h2 className="App-h2">08.20.22</h2>
+                    </div>
                     <div className="App-rsvpbutton">
                         <HeaderButton variant="contained" size="large" onClick={this.createItem}>
                             Add task

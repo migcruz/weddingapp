@@ -5,7 +5,7 @@ import Tab from '@mui/material/Tab';
 import { styled } from '@mui/material/styles';
 
 const NavBarBox = styled(Box)({
-    width: '100%',
+    width: 'inherit',
     border: '1px solid',
     borderRadius: '1px',
     backgroundColor: 'hsla(0, 0%, 100%, 0.15)',
