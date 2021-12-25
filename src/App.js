@@ -179,23 +179,39 @@ class App extends Component {
     };
 
     handleTokenModalSubmit = token => {
-        this.tokenModalToggle();
-        axios
-            // .get("http://localhost:8000/api/guestlist/ABCD4/")
-            // Because of proxy in package.json, command be shorten as follows:
-            .get(`/api/guestlist/${token.guestToken}/`)
-            .then(res => this.setState({ currentGuest: res.data, activeItem: res.data, guestToken: token }, () => {
-                console.log('waiting: ', this.state.activeItem);
-                this.toggle();
-            }))
-            .catch(err => console.log(err));
-        
-        // this.setState({ guestToken: token }, () => {
+        this.setState({ currentGuest: token, activeItem: token }, () => {
+            console.log('waiting: ', this.state.activeItem);
+            this.tokenModalToggle();  // toggle off TokenModal
+            this.toggle();  // toggle on GuestInfoModal
+        });
 
-        //     console.log('waiting: ', this.state.activeItem);
-        // });
+
+        ///////////////////////////////////
+        // // this.tokenModalToggle();
+
+        // //Hash the first and last name
+        // var crypto = require('crypto')
+        // var shasum = crypto.createHash('sha1')
+        // shasum.update(token.firstLastName)
+        // var hashToken = shasum.digest('hex')
+
+        // axios
+        //     // .get("http://localhost:8000/api/guestlist/ABCD4/")
+        //     // Because of proxy in package.json, command be shorten as follows:
+        //     .get(`/api/guestlist/${hashToken}/`)
+        //     .then(res => this.setState({ currentGuest: res.data, activeItem: res.data, guestToken: hashToken }, () => {
+        //         console.log('waiting: ', this.state.activeItem);
+        //         this.tokenModalToggle();  // toggle off TokenModal
+        //         this.toggle();  // toggle on GuestInfoModal
+        //     }))
+        //     .catch(err => console.log(err));
         
-        // TODO: Error handling of bad token
+        // // this.setState({ guestToken: token }, () => {
+
+        // //     console.log('waiting: ', this.state.activeItem);
+        // // });
+        
+        // // TODO: Error handling of bad token
     };
 
     handleDelete = item => {
@@ -276,6 +292,7 @@ class App extends Component {
                         activeItem={this.state.guestToken}
                         toggle={this.tokenModalToggle}
                         onSave={this.handleTokenModalSubmit}
+                        onCancel={this.tokenModalToggle}
                     />
                 ) : null}
             </main>

@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Guestlist(models.Model):
-    token = models.CharField(max_length=5)
+    token = models.CharField(max_length=50)
     firstName = models.TextField(default="")
     lastName = models.TextField(default="")
     email = models.TextField(default="")

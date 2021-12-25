@@ -34,8 +34,8 @@
     max-width: 3840px;
     margin: 0;
     padding: 0;
-    top: calc(2160px/2.4);
-    left: calc(3840px/2); /* half of max width */
+    top: calc(2160px * 0.42);
+    left: calc(3840px * 0.5); /* half of max width */
     position: absolute;
     align-items: center;
     justify-content: center;
@@ -47,8 +47,8 @@
     max-width: 3840px;
     margin: 0;
     padding: 0;
-    top: calc(2160px/1.8);
-    left: calc(3840px/2); /* half of max width */
+    top: calc(2160px * 0.55);
+    left: calc(3840px * 0.5); /* half of max width */
     position: absolute;
     align-items: center;
     justify-content: center;
@@ -60,8 +60,8 @@
     max-width: 3840px;
     margin: 0;
     padding: 0;
-    top: calc(2160px/1.44);
-    left: calc(3840px/2); /* half of max width */
+    top: calc(2160px * 0.7);
+    left: calc(3840px * 0.5); /* half of max width */
     display: flex;
     flex-direction: row;
     position: absolute;
@@ -76,7 +76,7 @@
     margin: 0;
     padding: 0;
     position: absolute;
-    top: 5%;
+    top: calc(2160px * 0.05);
   }
 }
 
@@ -101,8 +101,8 @@
     max-width: 2560px;
     margin: 0;
     padding: 0;
-    top: calc(1440px/2.4);
-    left: calc(2560px/2); /* half of max width */
+    top: calc(1440px * 0.42);
+    left: calc(2560px * 0.5); /* half of max width */
     position: absolute;
     align-items: center;
     justify-content: center;
@@ -114,8 +114,8 @@
     max-width: 2560px;
     margin: 0;
     padding: 0;
-    top: calc(1440px/1.8);
-    left: calc(2560px/2); /* half of max width */
+    top: calc(1440px * 0.55);
+    left: calc(2560px * 0.5); /* half of max width */
     position: absolute;
     align-items: center;
     justify-content: center;
@@ -127,8 +127,8 @@
     max-width: 2560px;
     margin: 0;
     padding: 0;
-    top: calc(1440px/1.44);
-    left: calc(2560px/2); /* half of max width */
+    top: calc(1440px * 0.7);
+    left: calc(2560px * 0.5); /* half of max width */
     display: flex;
     flex-direction: row;
     position: absolute;
@@ -143,7 +143,7 @@
     margin: 0;
     padding: 0;
     position: absolute;
-    top: 5%;
+    top: calc(1440px * 0.05);
   }
 }
 
@@ -168,8 +168,8 @@
     max-width: 1920px;
     margin: 0;
     padding: 0;
-    top: calc(1080px/2.4);
-    left: calc(1920px/2); /* half of max width */
+    top: calc(1080px * 0.42);
+    left: calc(1920px * 0.5); /* half of max width */
     position: absolute;
     align-items: center;
     justify-content: center;
@@ -181,8 +181,8 @@
     max-width: 1920px;
     margin: 0;
     padding: 0;
-    top: calc(1080px/1.8);
-    left: calc(1920px/2); /* half of max width */
+    top: calc(1080px * 0.55);
+    left: calc(1920px * 0.5); /* half of max width */
     position: absolute;
     align-items: center;
     justify-content: center;
@@ -194,8 +194,8 @@
     max-width: 1920px;
     margin: 0;
     padding: 0;
-    top: calc(1080px/1.44);
-    left: calc(1920px/2); /* half of max width */
+    top: calc(1080px * 0.7);
+    left: calc(1920px * 0.5); /* half of max width */
     display: flex;
     flex-direction: row;
     position: absolute;
@@ -210,7 +210,7 @@
     margin: 0;
     padding: 0;
     position: absolute;
-    top: 5%;
+    top: calc(1080px * 0.05);
   }
 }
 
@@ -221,7 +221,7 @@
 }
 
 .App-h1 {
-  font-size: 5.5em;
+  font-size: 550%;
   color: white;
   font-family: "DomLovesMary Pro";
   position: absolute;
