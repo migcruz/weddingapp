@@ -50,31 +50,19 @@ class TokenModal extends React.Component {
 		};
 	}
 
-    handleFirstNameVerify = e => {
-    	let { name, value } = e.target;
+    handleChange = e => {
+    	let { id, value } = e.target;
 		if (e.target.type === "checkbox") {
 			value = e.target.checked;
 		}
 
-		// async callback otherwise handleNameCleanup executes before setstate finishes
-        this.setState({ firstName: value }, () => {
-			this.handleNameCleanup();
+		// async callback otherwise handleCleanup executes before setstate finishes
+        this.setState({ [id]: value }, () => {
+			this.handleCleanup();
 		});
 	};
 
-	handleLastNameVerify = e => {
-    	let { name, value } = e.target;
-		if (e.target.type === "checkbox") {
-			value = e.target.checked;
-		}
-
-		// async callback otherwise handleNameCleanup executes before setstate finishes
-		this.setState({ lastName: value }, () => {
-			this.handleNameCleanup();
-		});
-	};
-
-	handleNameCleanup = () => {
+	handleCleanup = () => {
 		var tempValue = this.state.firstName.replace(/\s+/g, ''); //remove white spaces
         const firstName = tempValue.toLowerCase();
 
@@ -83,13 +71,12 @@ class TokenModal extends React.Component {
 
 		var tempValue = firstName + lastName;
 
-        // const activeItem = { ...this.state.firstLastName, ['firstLastName']: firstLastName };
         this.setState({ firstLastName: tempValue });
 	};
 
 	handleTokenVerify = (onSaveCallback) => {
 		
-		this.handleNameCleanup();
+		this.handleCleanup();
 
 		//Hash the first and last name
         var crypto = require('crypto')
@@ -140,7 +127,7 @@ class TokenModal extends React.Component {
         		<DialogTitle>Welcome Guest! Fill out the form below</DialogTitle>
         		<DialogContent dividers>
           			<DialogContentText>
-					  Please enter your first name
+					    Please enter your first name
           			</DialogContentText>
 					<TextField
 						autoFocus
@@ -150,10 +137,10 @@ class TokenModal extends React.Component {
 						type="text"
 						fullWidth
 						variant="standard"
-						onChange={this.handleFirstNameVerify}
+						onChange={this.handleChange}
 					/>
 					<DialogContentText>
-					Please enter your last name
+						Please enter your last name
           			</DialogContentText>
 					<TextField
 						autoFocus
@@ -163,7 +150,7 @@ class TokenModal extends React.Component {
 						type="text"
 						fullWidth
 						variant="standard"
-						onChange={this.handleLastNameVerify}
+						onChange={this.handleChange}
 					/>
         		</DialogContent>
         		<DialogActions>

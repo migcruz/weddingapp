@@ -162,20 +162,25 @@ class App extends Component {
     };
 
     handleSubmit = item => {
-        this.toggle();
-        if (item.id) {
-            axios
-                // Because of proxy in package.json, command be shorten as follows:
-                // .put(`http://localhost:8000/api/guestlist/${item.id}/`, item)
-                .put(`/api/guestlist/${item.token}/`, item)
-                .then(res => this.refreshList());
-            return;
-        }
-        axios
-            // Because of proxy in package.json, command be shorten as follows:
-            // .post("http://localhost:8000/api/guestlist/", item)
-            .post("/api/guestlist/", item)
-            .then(res => this.refreshList());
+        this.setState({ currentGuest: item, activeItem: item }, () => {
+            console.log('waiting: ', this.state.activeItem);
+            this.toggle();  // toggle on GuestInfoModal
+            this.refreshList()
+        });
+        // this.toggle();
+        // if (item.id) {
+        //     axios
+        //         // Because of proxy in package.json, command be shorten as follows:
+        //         // .put(`http://localhost:8000/api/guestlist/${item.id}/`, item)
+        //         .put(`/api/guestlist/${item.token}/`, item)
+        //         .then(res => this.refreshList());
+        //     return;
+        // }
+        // axios
+        //     // Because of proxy in package.json, command be shorten as follows:
+        //     // .post("http://localhost:8000/api/guestlist/", item)
+        //     .post("/api/guestlist/", item)
+        //     .then(res => this.refreshList());
     };
 
     handleTokenModalSubmit = token => {
@@ -285,6 +290,7 @@ class App extends Component {
                         activeItem={this.state.activeItem}
                         toggle={this.toggle}
                         onSave={this.handleSubmit}
+                        onCancel={this.toggle}
                     />
                 ) : null}
                 {this.state.tokenModalShow ? (
