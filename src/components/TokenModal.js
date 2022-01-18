@@ -23,11 +23,6 @@ import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 
 class TokenModal extends React.Component {
-	// const [open, setOpen] = React.useState(false);
-  
-	// const handleClose = () => {
-	//   setOpen(false);
-	// };
 
 	constructor(props) {
 		super(props);
@@ -74,10 +69,10 @@ class TokenModal extends React.Component {
 		var tempValue = this.state.firstName.replace(/\s+/g, ''); //remove white spaces
         const firstName = tempValue.toLowerCase();
 
-		var tempValue = this.state.lastName.replace(/\s+/g, ''); //remove white spaces
+		tempValue = this.state.lastName.replace(/\s+/g, ''); //remove white spaces
         const lastName = tempValue.toLowerCase();
 
-		var tempValue = firstName + lastName;
+		tempValue = firstName + lastName;
 
         this.setState({ firstLastName: tempValue });
 	};
@@ -88,7 +83,7 @@ class TokenModal extends React.Component {
 
 		// Verify first name
 		var tempValue = this.state.firstName.replace(/\s+/g, '')  //remove white spaces
-		if (tempValue== '') {
+		if (tempValue === '') {
 			this.setState({ isFirstNameError: true });
 			status = true;
 		}
@@ -97,8 +92,8 @@ class TokenModal extends React.Component {
 		}
 		
 		// Verify last name
-		var tempValue = this.state.lastName.replace(/\s+/g, '')  //remove white spaces
-		if (tempValue== '') {
+		tempValue = this.state.lastName.replace(/\s+/g, '')  //remove white spaces
+		if (tempValue === '') {
 			this.setState({ isLastNameError: true });
 			status = true;
 		}
@@ -211,14 +206,14 @@ class TokenModal extends React.Component {
 		const { toggle, onSave, onCancel } = this.props;
         return (
 			<Dialog open={toggle}>
-				<DialogTitle>Welcome Guest! Fill out the form below</DialogTitle>
+				<DialogTitle>Welcome Guest! Please fill out the form below.</DialogTitle>
 				<DialogContent dividers>
 					{this.renderFirstName()}
 					{this.renderLastName()}
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={() => onCancel()}>Cancel</Button>
-					<Button onClick={() => this.handleTokenVerify( () => { onSave(this.state.activeItem); })}>
+					<Button variant="outlined" onClick={() => onCancel()}>Cancel</Button>
+					<Button variant="contained" onClick={() => this.handleTokenVerify( () => { onSave(this.state.activeItem); })}>
 							Submit
 					</Button>
 				</DialogActions>
@@ -245,9 +240,9 @@ class TokenModal extends React.Component {
 					</Box>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={() => onCancel()}>Cancel</Button>
-					<Button onClick={() => { this.setState({ isError: false }); }}>Retry</Button>
-					<Button onClick={() => onSave(this.state.activeItem)}>
+					<Button variant="outlined" onClick={() => onCancel()}>Cancel</Button>
+					<Button variant="outlined" onClick={() => { this.setState({ isError: false }); }}>Retry</Button>
+					<Button variant="contained" onClick={() => onSave(this.state.activeItem)}>
 							Next
 					</Button>
 				</DialogActions>

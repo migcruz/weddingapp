@@ -27,6 +27,7 @@ import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 
 class GuestInfoModal extends React.Component {
+
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -40,6 +41,7 @@ class GuestInfoModal extends React.Component {
 			isEmailError: false,
 		};
 	}
+
 	handleChange = e => {
 		let { id, value, name, checked } = e.target;
 		if (e.target.type === "radio") {
@@ -72,10 +74,10 @@ class GuestInfoModal extends React.Component {
 		var tempValue = this.state.activeItem.firstName.replace(/\s+/g, ''); //remove white spaces
         const firstName = tempValue.toLowerCase();
 
-		var tempValue = this.state.activeItem.lastName.replace(/\s+/g, ''); //remove white spaces
+		tempValue = this.state.activeItem.lastName.replace(/\s+/g, ''); //remove white spaces
         const lastName = tempValue.toLowerCase();
 
-		var tempValue = firstName + lastName;
+		tempValue = firstName + lastName;
 
         this.setState({ firstLastName: tempValue });
 		
@@ -92,8 +94,6 @@ class GuestInfoModal extends React.Component {
 			.catch(err => this.setState({ errorMessage: err.toJSON().message, isError: true, isSuccess: false }, () => {
                 console.log(this.state.errorMessage);
             }))
-
-			// TODO error handling
 	};
 
 	handlePost = () => {
@@ -116,7 +116,7 @@ class GuestInfoModal extends React.Component {
 
 		// Verify first name
 		var tempValue = this.state.activeItem.firstName.replace(/\s+/g, '')  //remove white spaces
-		if (tempValue== '') {
+		if (tempValue === '') {
 			this.setState({ isFirstNameError: true });
 			status = true;
 		}
@@ -125,8 +125,8 @@ class GuestInfoModal extends React.Component {
 		}
 		
 		// Verify last name
-		var tempValue = this.state.activeItem.lastName.replace(/\s+/g, '')  //remove white spaces
-		if (tempValue== '') {
+		tempValue = this.state.activeItem.lastName.replace(/\s+/g, '')  //remove white spaces
+		if (tempValue === '') {
 			this.setState({ isLastNameError: true });
 			status = true;
 		}
@@ -135,8 +135,8 @@ class GuestInfoModal extends React.Component {
 		}
 
 		// Verify email
-		var tempValue = this.state.activeItem.email.replace(/\s+/g, '')  //remove white spaces
-		if (tempValue== '') {
+		tempValue = this.state.activeItem.email.replace(/\s+/g, '')  //remove white spaces
+		if (tempValue === '') {
 			this.setState({ isEmailError: true });
 			status = true;
 		}
@@ -286,7 +286,7 @@ class GuestInfoModal extends React.Component {
 	};
 
 	renderOkay = () => {
-		const { toggle, onSave, onCancel } = this.props;
+		const { toggle, onCancel } = this.props;
 		return (
 			<Dialog open={toggle}>
 				<DialogTitle>Welcome {this.state.activeItem.firstName}! Please edit and submit your information.</DialogTitle>
@@ -334,8 +334,8 @@ class GuestInfoModal extends React.Component {
 					</RadioGroup>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={() => onCancel()}>Cancel</Button>
-          			<Button onClick={() => this.handleTokenVerify()}>
+					<Button variant="outlined" onClick={() => onCancel()}>Cancel</Button>
+          			<Button variant="contained" onClick={() => this.handleTokenVerify()}>
 						  Submit
 					</Button>
         		</DialogActions>
@@ -362,7 +362,7 @@ class GuestInfoModal extends React.Component {
 					</Box>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={() => onCancel()}>Cancel</Button>
+					<Button variant="outlined" onClick={() => onCancel()}>Cancel</Button>
 				</DialogActions>
 			</Dialog>
 		);
@@ -387,7 +387,7 @@ class GuestInfoModal extends React.Component {
 					</Box>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={() => onSave(this.state.activeItem)}>
+					<Button variant="contained" onClick={() => onSave(this.state.activeItem)}>
 							Done
 					</Button>
 				</DialogActions>
