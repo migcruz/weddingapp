@@ -17,20 +17,24 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
+import Divider from '@mui/material/Divider';
+import Box from '@mui/material/Box';
 
 class GuestInfoModal extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			activeItem: this.props.activeItem,
-			firstName: '',
-			lastName: '',
 			firstLastName: '',
+			isError: false,
+			isSuccess: false,
+			errorMessage: '',
 		};
 	}
 	handleChange = e => {
@@ -74,7 +78,37 @@ class GuestInfoModal extends React.Component {
 		
 	};
 
-	handleTokenVerify = (onSaveCallback) => {
+	handlePut = () => {
+		axios
+			// Because of proxy in package.json, command be shorten as follows:
+			// .put(`http://localhost:8000/api/guestlist/${this.state.activeItem.id}/`, this.state.activeItem)
+			.put(`/api/guestlist/${this.state.activeItem.token}/`, this.state.activeItem)
+			.then(res => this.setState({ errorMessage: '', isError: false, isSuccess: true }, () => {
+				console.log('PUT SUCCESS: ', this.state.activeItem);
+			}))
+			.catch(err => this.setState({ errorMessage: err.toJSON().message, isError: true, isSuccess: false }, () => {
+                console.log(this.state.errorMessage);
+            }))
+
+			// TODO error handling
+	};
+
+	handlePost = () => {
+		axios
+            // Because of proxy in package.json, command be shorten as follows:
+            // .post("http://localhost:8000/api/guestlist/", this.state.activeItem)
+            .post("/api/guestlist/", this.state.activeItem)
+            .then(res => this.setState({ errorMessage: '', isError: false, isSuccess: true }, () => {
+				console.log('POST SUCCESS: ', this.state.activeItem);
+			}))
+			
+			.catch(err => this.setState({ errorMessage: err.toJSON().message, isError: true, isSuccess: false }, () => {
+                console.log(this.state.errorMessage);
+            }))
+	};
+
+
+	handleTokenVerify = () => {
 		
 		this.handleCleanup();
 
@@ -86,35 +120,22 @@ class GuestInfoModal extends React.Component {
 
 		const activeItem = { ...this.state.activeItem, 'token': hashToken };
 
-		if (this.state.activeItem.id) {
-            axios
-                // Because of proxy in package.json, command be shorten as follows:
-                // .put(`http://localhost:8000/api/guestlist/${this.state.activeItem.id}/`, this.state.activeItem)
-                .put(`/api/guestlist/${hashToken}/`, this.state.activeItem)
-                .then(res => this.setState({ activeItem: activeItem }, () => {
-					console.log('LLLLLLLLLLLLLLL: ', this.state.activeItem);
-					onSaveCallback();
-				}))
-				.catch(err => console.log(err));
-
-				// TODO error handling
-
-            return;
-        }
-        axios
+		axios
+            // .get("http://localhost:8000/api/guestlist/ABCD4/")
             // Because of proxy in package.json, command be shorten as follows:
-            // .post("http://localhost:8000/api/guestlist/", this.state.activeItem)
-            .post("/api/guestlist/", this.state.activeItem)
-            .then(res => this.setState({ activeItem: activeItem }, () => {
-				console.log('RRRRRRRRRRRRRR: ', this.state.activeItem);
-				onSaveCallback();
-			}))
-			.catch(err => console.log(err));
+            .get(`/api/guestlist/${hashToken}/`)
+            .then(res => this.setState({ activeItem: activeItem, errorMessage: '', isError: false }, () => {
+				this.handlePut();
+            }))
+            .catch(err => this.setState({ activeItem: activeItem, errorMessage: err.toJSON().message, isError: true }, () => {
+                console.log(this.state.errorMessage);
 
-			// TODO error handling
+				// User not found in db, so post a new entry
+				this.handlePost();
+            }))
 	};
-	
-	render() {
+
+	renderOkay = () => {
 		const { toggle, onSave, onCancel } = this.props;
 		return (
 			<Dialog open={toggle}>
@@ -125,17 +146,6 @@ class GuestInfoModal extends React.Component {
 						<FormControlLabel value={true} control={<Radio />} label="Yes" onChange={this.handleChange}/>
 						<FormControlLabel value={false} control={<Radio />} label="No" onChange={this.handleChange}/>
 					</RadioGroup>
-					<TextField
-						autoFocus
-						margin="dense"
-						id="token"
-						label="Guest Token"
-						type="text"
-						fullWidth
-						variant="standard"
-						value={this.state.activeItem.token}
-						onChange={this.handleChange}
-					/>
 					<TextField
 						autoFocus
 						margin="dense"
@@ -191,6 +201,7 @@ class GuestInfoModal extends React.Component {
 						value={this.state.activeItem.allergies}
 						onChange={this.handleChange}
 					/>
+					<Box sx={{ m: 3 }}></Box>
 					<FormLabel component="legend">Vegan</FormLabel>
 					<RadioGroup row name="vegan" value={this.state.activeItem.vegan}>
 						<FormControlLabel value={true} control={<Radio />} label="Yes" onChange={this.handleChange}/>
@@ -204,12 +215,90 @@ class GuestInfoModal extends React.Component {
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={() => onCancel()}>Cancel</Button>
-          			<Button onClick={() => this.handleTokenVerify( () => { onSave(this.state.activeItem); })}>
+          			<Button onClick={() => this.handleTokenVerify()}>
 						  Submit
 					</Button>
         		</DialogActions>
 			</Dialog>
 		);
+	};
+
+	renderError = () => {
+		const { toggle, onCancel } = this.props;
+        return (
+			<Dialog open={toggle}>
+				<DialogTitle>Oops! There was an Error :(</DialogTitle>
+				<DialogContent dividers>
+					<Box sx={{ m: 2 }}>
+						<DialogContentText sx={{ color: 'red' }}>
+							Error: {this.state.errorMessage}
+						</DialogContentText>
+					</Box>
+					<Divider variant="middle" />
+					<Box sx={{ m: 2 }}>
+						<DialogContentText sx={{ color: 'black' }}>
+							We're sorry, we could not submit your information for guest: {this.state.activeItem.firstName} {this.state.activeItem.lastName}. Please contact miguel.jessica.shared@gmail.com for assistance.
+						</DialogContentText>
+					</Box>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={() => onCancel()}>Cancel</Button>
+				</DialogActions>
+			</Dialog>
+		);
+    };
+
+	renderSuccess = () => {
+		const { toggle, onSave } = this.props;
+        return (
+			<Dialog open={toggle}>
+				<DialogTitle>Thank you! Your information has been submitted.</DialogTitle>
+				<DialogContent dividers>
+					<Box sx={{ m: 2 }}>
+						<DialogContentText sx={{ color: 'green' }}>
+							Success! Submitted information for guest: {this.state.activeItem.firstName} {this.state.activeItem.lastName}
+						</DialogContentText>
+					</Box>
+					<Divider variant="middle" />
+					<Box sx={{ m: 2 }}>
+						<DialogContentText sx={{ color: 'black' }}>
+							We look forward to seeing you soon {this.state.activeItem.firstName}! Please contact miguel.jessica.shared@gmail.com if you require any assistance.
+						</DialogContentText>
+					</Box>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={() => onSave(this.state.activeItem)}>
+							Done
+					</Button>
+				</DialogActions>
+			</Dialog>
+		);
+    };
+	
+	render() {
+		if (this.state.isError) {
+			return (
+				<div>
+					{this.renderError()}
+				</div>
+			);
+		}
+		else {
+			if (this.state.isSuccess) {
+				return (
+					<div>
+						{this.renderSuccess()}
+					</div>
+				);
+			}
+			else {
+				return (
+					<div>
+						{this.renderOkay()}
+					</div>
+				);
+			}
+		}
 	}
 }
 

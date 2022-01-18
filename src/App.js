@@ -164,7 +164,7 @@ class App extends Component {
     handleSubmit = item => {
         this.setState({ currentGuest: item, activeItem: item }, () => {
             console.log('waiting: ', this.state.activeItem);
-            this.toggle();  // toggle on GuestInfoModal
+            this.toggle();  // toggle GuestInfoModal
             this.refreshList()
         });
         // this.toggle();

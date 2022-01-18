@@ -19,6 +19,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import Divider from '@mui/material/Divider';
+import Box from '@mui/material/Box';
 
 class TokenModal extends React.Component {
 	// const [open, setOpen] = React.useState(false);
@@ -47,6 +49,8 @@ class TokenModal extends React.Component {
 			lastName: '',
 			firstLastName: '',
 			guestToken: this.props.activeItem,
+			isError: false,
+			errorMessage: '',
 		};
 	}
 
@@ -55,9 +59,11 @@ class TokenModal extends React.Component {
 		if (e.target.type === "checkbox") {
 			value = e.target.checked;
 		}
+        
+		const activeItem = { ...this.state.activeItem, [id]: value };
 
 		// async callback otherwise handleCleanup executes before setstate finishes
-        this.setState({ [id]: value }, () => {
+        this.setState({ [id]: value, activeItem}, () => {
 			this.handleCleanup();
 		});
 	};
@@ -88,47 +94,25 @@ class TokenModal extends React.Component {
             // .get("http://localhost:8000/api/guestlist/ABCD4/")
             // Because of proxy in package.json, command be shorten as follows:
             .get(`/api/guestlist/${hashToken}/`)
-            .then(res => this.setState({ activeItem: res.data }, () => {
+            .then(res => this.setState({ activeItem: res.data, errorMessage: '', isError: false }, () => {
                 console.log('LLLLLLLLLLLLLLL: ', this.state.activeItem);
 				onSaveCallback();
             }))
-            .catch(err => console.log(err));
-
-			// TODO error handling
+            .catch(err => this.setState({ errorMessage: err.toJSON().message, isError: true }, () => {
+                console.log(err.toJSON());
+            }))
 	};
 
 	handleClose = () => {
-		// setOpen(false);
+		// setOpen(false); 
 	};
 
-	// renderError = () => {
-    //     return (
-    //         <div className="my-5 tab-list">
-    //             <span
-    //                 onClick={() => this.displayRsvp(true)}
-    //                 className={this.state.viewRsvp ? "active" : ""}
-    //             >
-    //                 Rsvp
-    //         </span>
-    //             <span
-    //                 onClick={() => this.displayRsvp(false)}
-    //                 className={this.state.viewRsvp ? "" : "active"}
-    //             >
-    //                 No Rsvp
-    //         </span>
-    //         </div>
-    //     );
-    // };
-
-	render() {
+	renderOkay = () => {
 		const { toggle, onSave, onCancel } = this.props;
-		return (
+        return (
 			<Dialog open={toggle}>
-        		<DialogTitle>Welcome Guest! Fill out the form below</DialogTitle>
-        		<DialogContent dividers>
-          			<DialogContentText>
-					    Please enter your first name
-          			</DialogContentText>
+				<DialogTitle>Welcome Guest! Fill out the form below</DialogTitle>
+				<DialogContent dividers>
 					<TextField
 						autoFocus
 						margin="dense"
@@ -139,9 +123,6 @@ class TokenModal extends React.Component {
 						variant="standard"
 						onChange={this.handleChange}
 					/>
-					<DialogContentText>
-						Please enter your last name
-          			</DialogContentText>
 					<TextField
 						autoFocus
 						margin="dense"
@@ -152,14 +133,99 @@ class TokenModal extends React.Component {
 						variant="standard"
 						onChange={this.handleChange}
 					/>
-        		</DialogContent>
-        		<DialogActions>
+				</DialogContent>
+				<DialogActions>
 					<Button onClick={() => onCancel()}>Cancel</Button>
-          			<Button onClick={() => this.handleTokenVerify( () => { onSave(this.state.activeItem); })}>
-						  Submit
+					<Button onClick={() => this.handleTokenVerify( () => { onSave(this.state.activeItem); })}>
+							Submit
 					</Button>
-        		</DialogActions>
-      		</Dialog>
+				</DialogActions>
+			</Dialog>
+		);
+	};
+
+	renderError = () => {
+		const { toggle, onSave, onCancel } = this.props;
+        return (
+			<Dialog open={toggle}>
+				<DialogTitle>Oops! There was an Error :(</DialogTitle>
+				<DialogContent dividers>
+					<Box sx={{ m: 2 }}>
+						<DialogContentText sx={{ color: 'red' }}>
+							Error: {this.state.errorMessage}
+						</DialogContentText>
+					</Box>
+					<Divider variant="middle" />
+					<Box sx={{ m: 2 }}>
+						<DialogContentText sx={{ color: 'black' }}>
+							We're sorry, we could not find your information for guest: {this.state.firstName} {this.state.lastName}. Please click next to register as a new guest.
+						</DialogContentText>
+					</Box>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={() => onCancel()}>Cancel</Button>
+					<Button onClick={() => onSave(this.state.activeItem)}>
+							Next
+					</Button>
+				</DialogActions>
+			</Dialog>
+		);
+    };
+
+	render() {
+		if (this.state.isError) {
+			return (
+				<div>
+					{this.renderError()}
+				</div>
+			);
+		}
+		else {
+			return (
+				<div>
+					{this.renderOkay()}
+				</div>
+			);
+		}
+
+
+			// <Dialog open={toggle}>
+        	// 	<DialogTitle>Welcome Guest! Fill out the form below</DialogTitle>
+        	// 	<DialogContent dividers>
+          	// 		<DialogContentText>
+			// 		    Please enter your first name
+          	// 		</DialogContentText>
+			// 		<TextField
+			// 			autoFocus
+			// 			margin="dense"
+			// 			id="firstName"
+			// 			label="First name"
+			// 			type="text"
+			// 			fullWidth
+			// 			variant="standard"
+			// 			onChange={this.handleChange}
+			// 		/>
+			// 		<DialogContentText>
+			// 			Please enter your last name
+          	// 		</DialogContentText>
+			// 		<TextField
+			// 			autoFocus
+			// 			margin="dense"
+			// 			id="lastName"
+			// 			label="Last name"
+			// 			type="text"
+			// 			fullWidth
+			// 			variant="standard"
+			// 			onChange={this.handleChange}
+			// 		/>
+        	// 	</DialogContent>
+        	// 	<DialogActions>
+			// 		<Button onClick={() => onCancel()}>Cancel</Button>
+          	// 		<Button onClick={() => this.handleTokenVerify( () => { onSave(this.state.activeItem); })}>
+			// 			  Submit
+			// 		</Button>
+        	// 	</DialogActions>
+      		// </Dialog>
 
 
 
@@ -195,7 +261,6 @@ class TokenModal extends React.Component {
             //   		</Button>
 			// 	</ModalFooter>
 			// </Modal>
-		);
 	}
 }
 
