@@ -35,6 +35,9 @@ class GuestInfoModal extends React.Component {
 			isError: false,
 			isSuccess: false,
 			errorMessage: '',
+			isFirstNameError: false,
+			isLastNameError: false,
+			isEmailError: false,
 		};
 	}
 	handleChange = e => {
@@ -107,9 +110,48 @@ class GuestInfoModal extends React.Component {
             }))
 	};
 
+	handleTextFieldVerify = () => {
+
+		var status = false;
+
+		// Verify first name
+		var tempValue = this.state.activeItem.firstName.replace(/\s+/g, '')  //remove white spaces
+		if (tempValue== '') {
+			this.setState({ isFirstNameError: true });
+			status = true;
+		}
+		else {
+			this.setState({ isFirstNameError: false });
+		}
+		
+		// Verify last name
+		var tempValue = this.state.activeItem.lastName.replace(/\s+/g, '')  //remove white spaces
+		if (tempValue== '') {
+			this.setState({ isLastNameError: true });
+			status = true;
+		}
+		else {
+			this.setState({ isLastNameError: false });
+		}
+
+		// Verify email
+		var tempValue = this.state.activeItem.email.replace(/\s+/g, '')  //remove white spaces
+		if (tempValue== '') {
+			this.setState({ isEmailError: true });
+			status = true;
+		}
+		else {
+			this.setState({ isEmailError: false });
+		}
+		return status;
+	};
 
 	handleTokenVerify = () => {
 		
+		var status = this.handleTextFieldVerify();
+		if (status) {
+			return status;
+		}
 		this.handleCleanup();
 
 		//Hash the first and last name
@@ -135,50 +177,128 @@ class GuestInfoModal extends React.Component {
             }))
 	};
 
+	renderFirstName = () => {
+		if (this.state.isFirstNameError) {
+			return (
+				<TextField
+					error
+					autoFocus
+					margin="dense"
+					id="firstName"
+					label="*First Name"
+					type="text"
+					fullWidth
+					variant="standard"
+					helperText="Incorrect entry. Cannot be empty"
+					value={this.state.activeItem.firstName}
+					onChange={this.handleChange}
+				/>
+			);
+		}
+		else {
+			return (
+				<TextField
+					autoFocus
+					margin="dense"
+					id="firstName"
+					label="*First Name"
+					type="text"
+					fullWidth
+					variant="standard"
+					value={this.state.activeItem.firstName}
+					onChange={this.handleChange}
+				/>
+			);
+		}
+		
+	};
+
+	renderLastName = () => {
+		if (this.state.isLastNameError) {
+			return (
+				<TextField
+					error
+					autoFocus
+					margin="dense"
+					id="lastName"
+					label="*Last Name"
+					type="text"
+					fullWidth
+					variant="standard"
+					helperText="Incorrect entry. Cannot be empty"
+					value={this.state.activeItem.lastName}
+					onChange={this.handleChange}
+				/>
+			);
+		}
+		else {
+			return (
+				<TextField
+					autoFocus
+					margin="dense"
+					id="lastName"
+					label="*Last Name"
+					type="text"
+					fullWidth
+					variant="standard"
+					value={this.state.activeItem.lastName}
+					onChange={this.handleChange}
+				/>
+			);
+		}
+		
+	};
+
+	renderEmail = () => {
+		if (this.state.isEmailError) {
+			return (
+				<TextField
+					error
+					autoFocus
+					margin="dense"
+					id="email"
+					label="*E-mail address"
+					type="text"
+					fullWidth
+					variant="standard"
+					helperText="Incorrect entry. Cannot be empty"
+					value={this.state.activeItem.email}
+					onChange={this.handleChange}
+				/>
+			);
+		}
+		else {
+			return (
+				<TextField
+					autoFocus
+					margin="dense"
+					id="email"
+					label="*E-mail address"
+					type="text"
+					fullWidth
+					variant="standard"
+					value={this.state.activeItem.email}
+					onChange={this.handleChange}
+				/>
+			);
+		}
+		
+	};
+
 	renderOkay = () => {
 		const { toggle, onSave, onCancel } = this.props;
 		return (
 			<Dialog open={toggle}>
-				<DialogTitle>Guest Info</DialogTitle>
+				<DialogTitle>Welcome {this.state.activeItem.firstName}! Please edit and submit your information.</DialogTitle>
 				<DialogContent dividers>
 					<FormLabel component="legend">RSVP</FormLabel>
 					<RadioGroup row name="rsvp" value={this.state.activeItem.rsvp}>
 						<FormControlLabel value={true} control={<Radio />} label="Yes" onChange={this.handleChange}/>
 						<FormControlLabel value={false} control={<Radio />} label="No" onChange={this.handleChange}/>
 					</RadioGroup>
-					<TextField
-						autoFocus
-						margin="dense"
-						id="firstName"
-						label="First Name"
-						type="text"
-						fullWidth
-						variant="standard"
-						value={this.state.activeItem.firstName}
-						onChange={this.handleChange}
-					/>
-					<TextField
-						autoFocus
-						margin="dense"
-						id="lastName"
-						label="Last Name"
-						type="text"
-						fullWidth
-						variant="standard"
-						value={this.state.activeItem.lastName}
-						onChange={this.handleChange}
-					/>
-					<TextField
-						autoFocus
-						margin="dense"
-						id="email"
-						label="E-mail address"
-						type="text"
-						fullWidth
-						variant="standard"
-						value={this.state.activeItem.email}
-						onChange={this.handleChange}
-					/>
+					{this.renderFirstName()}
+					{this.renderLastName()}
+					{this.renderEmail()}
 					<TextField
 						autoFocus
 						margin="dense"

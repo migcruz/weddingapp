@@ -51,6 +51,8 @@ class TokenModal extends React.Component {
 			guestToken: this.props.activeItem,
 			isError: false,
 			errorMessage: '',
+			isFirstNameError: false,
+			isLastNameError: false,
 		};
 	}
 
@@ -80,8 +82,38 @@ class TokenModal extends React.Component {
         this.setState({ firstLastName: tempValue });
 	};
 
+	handleTextFieldVerify = () => {
+
+		var status = false;
+
+		// Verify first name
+		var tempValue = this.state.firstName.replace(/\s+/g, '')  //remove white spaces
+		if (tempValue== '') {
+			this.setState({ isFirstNameError: true });
+			status = true;
+		}
+		else {
+			this.setState({ isFirstNameError: false });
+		}
+		
+		// Verify last name
+		var tempValue = this.state.lastName.replace(/\s+/g, '')  //remove white spaces
+		if (tempValue== '') {
+			this.setState({ isLastNameError: true });
+			status = true;
+		}
+		else {
+			this.setState({ isLastNameError: false });
+		}
+		return status;
+	};
+
 	handleTokenVerify = (onSaveCallback) => {
 		
+		var status = this.handleTextFieldVerify();
+		if (status) {
+			return status;
+		}
 		this.handleCleanup();
 
 		//Hash the first and last name
@@ -103,8 +135,76 @@ class TokenModal extends React.Component {
             }))
 	};
 
-	handleClose = () => {
-		// setOpen(false); 
+	renderFirstName = () => {
+		if (this.state.isFirstNameError) {
+			return (
+				<TextField
+					error
+					autoFocus
+					margin="dense"
+					id="firstName"
+					label="First name"
+					type="text"
+					fullWidth
+					variant="standard"
+					helperText="Incorrect entry. Cannot be empty"
+					value={this.state.firstName}
+					onChange={this.handleChange}
+				/>
+			);
+		}
+		else {
+			return (
+				<TextField
+					autoFocus
+					margin="dense"
+					id="firstName"
+					label="First name"
+					type="text"
+					fullWidth
+					variant="standard"
+					value={this.state.firstName}
+					onChange={this.handleChange}
+				/>
+			);
+		}
+		
+	};
+
+	renderLastName = () => {
+		if (this.state.isLastNameError) {
+			return (
+				<TextField
+					error
+					autoFocus
+					margin="dense"
+					id="lastName"
+					label="Last name"
+					type="text"
+					fullWidth
+					variant="standard"
+					helperText="Incorrect entry. Cannot be empty"
+					value={this.state.lastName}
+					onChange={this.handleChange}
+				/>
+			);
+		}
+		else {
+			return (
+				<TextField
+					autoFocus
+					margin="dense"
+					id="lastName"
+					label="Last name"
+					type="text"
+					fullWidth
+					variant="standard"
+					value={this.state.lastName}
+					onChange={this.handleChange}
+				/>
+			);
+		}
+		
 	};
 
 	renderOkay = () => {
@@ -113,26 +213,8 @@ class TokenModal extends React.Component {
 			<Dialog open={toggle}>
 				<DialogTitle>Welcome Guest! Fill out the form below</DialogTitle>
 				<DialogContent dividers>
-					<TextField
-						autoFocus
-						margin="dense"
-						id="firstName"
-						label="First name"
-						type="text"
-						fullWidth
-						variant="standard"
-						onChange={this.handleChange}
-					/>
-					<TextField
-						autoFocus
-						margin="dense"
-						id="lastName"
-						label="Last name"
-						type="text"
-						fullWidth
-						variant="standard"
-						onChange={this.handleChange}
-					/>
+					{this.renderFirstName()}
+					{this.renderLastName()}
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={() => onCancel()}>Cancel</Button>
@@ -158,12 +240,13 @@ class TokenModal extends React.Component {
 					<Divider variant="middle" />
 					<Box sx={{ m: 2 }}>
 						<DialogContentText sx={{ color: 'black' }}>
-							We're sorry, we could not find your information for guest: {this.state.firstName} {this.state.lastName}. Please click next to register as a new guest.
+							We're sorry, we could not find your information for guest: {this.state.firstName} {this.state.lastName}. Please retry or click next to register as a new guest.
 						</DialogContentText>
 					</Box>
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={() => onCancel()}>Cancel</Button>
+					<Button onClick={() => { this.setState({ isError: false }); }}>Retry</Button>
 					<Button onClick={() => onSave(this.state.activeItem)}>
 							Next
 					</Button>
