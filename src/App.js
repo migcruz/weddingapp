@@ -257,7 +257,7 @@ class App extends Component {
                         <h1 className="App-h1">Miguel & Jessica</h1>
                     </div>
                     <div className="App-headribbonh2">
-                        <h2 className="App-h2">08.20.22</h2>
+                        <h2 className="App-h2">August.20.22</h2>
                     </div>
                     <div className="App-rsvpbutton">
                         <HeaderButton variant="contained" size="large" onClick={this.createItem}>
