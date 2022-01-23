@@ -25,7 +25,7 @@ const HeaderButton = styled(Button)({
     fontSize: '70%',
     fontWeight: '100',
     color: 'hsla(0, 0%, 100%, 1)', //Font color
-    padding: '2.75rem 11rem',  //em is relative to font size
+    padding: '1em 4em',  //em is relative to font size
     border: '1px solid',
     borderRadius: '1px',
     lineHeight: 1.5,
@@ -257,7 +257,7 @@ class App extends Component {
                         <h1 className="App-h1">Miguel & Jessica</h1>
                     </div>
                     <div className="App-headribbonh2">
-                        <h2 className="App-h2">August.20.22</h2>
+                        <h2 className="App-h2">August 20, 2022</h2>
                     </div>
                     <div className="App-rsvpbutton">
                         <HeaderButton variant="contained" size="large" onClick={this.createItem}>
