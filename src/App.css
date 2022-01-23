@@ -24,8 +24,9 @@
   }
   
   .App-headribbonimage {
-    min-width: 3840px;
-    max-width: 3840px;
+    display: block;
+    max-width: 100%;
+    height: auto;
     opacity: 0.5;
   }
 
@@ -91,8 +92,9 @@
   }
   
   .App-headribbonimage {
-    min-width: 2560px;
-    max-width: 2560px;
+    display: block;
+    max-width: 100%;
+    height: auto;
     opacity: 0.5;
   }
 
@@ -158,8 +160,9 @@
   }
   
   .App-headribbonimage {
-    min-width: 1920px;
-    max-width: 1920px;
+    display: block;
+    max-width: 100%;
+    height: auto;
     opacity: 0.5;
   }
 
