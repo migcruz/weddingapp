@@ -21,7 +21,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	background-color: #000000;
 	/* makes horizontal scrollbar appear if window is too small */
-	overflow-x: scroll; 
+	/* overflow-x: scroll;  */
 }
 
 .todo-title {
