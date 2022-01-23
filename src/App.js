@@ -46,6 +46,7 @@ const HeaderButton = styled(Button)({
         borderColor: 'hsla(0, 0%, 100%, 1)',
     },
     '&:focus': {
+        boxShadow: 'none',
         boxShadow: '0 0 0 0.2rem rgba(217,140,140,.7)',
     },
 });

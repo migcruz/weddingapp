@@ -18,10 +18,68 @@
   /* divs */ 
   
   .App-headribbon {
-    max-width: 100%;
+    min-width: 3840px;
+    max-width: 3840px;
     font-size: 4em;
   }
   
+  .App-headribbonimage {
+    min-width: 3840px;
+    max-width: 3840px;
+    opacity: 0.5;
+    display: block;
+    height: auto;
+  }
+
+  .App-headribbonh1 {
+    min-width: 3840px;
+    max-width: 3840px;
+    margin: 0;
+    padding: 0;
+    top: calc(2160px * 0.42);
+    left: calc(3840px * 0.5); /* half of max width */
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%); /*keep it centered*/
+  }
+
+  .App-headribbonh2 {
+    min-width: 3840px;
+    max-width: 3840px;
+    margin: 0;
+    padding: 0;
+    top: calc(2160px * 0.55);
+    left: calc(3840px * 0.5); /* half of max width */
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%); /*keep it centered*/
+  }
+
+  .App-rsvpbutton {
+    min-width: 3840px;
+    max-width: 3840px;
+    margin: 0;
+    padding: 0;
+    top: calc(2160px * 0.7);
+    left: calc(3840px * 0.5); /* half of max width */
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%); /*keep it centered*/
+  }
+
+  .App-navbar {
+    min-width: 3840px;
+    max-width: 3840px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: calc(2160px * 0.05);
+  }
 }
 
 @media only screen and (max-device-width: 2560px) and (min-device-width: 1921px) {
@@ -29,10 +87,66 @@
   /* divs */ 
   
   .App-headribbon {
-    max-width: 100%;;
-    font-size: 2.66667em;
+    min-width: 2560px;
+    max-width: 2560px;
+    font-size: 2.666666666667em;
   }
   
+  .App-headribbonimage {
+    min-width: 2560px;
+    max-width: 2560px;
+    opacity: 0.5;
+  }
+
+  .App-headribbonh1 {
+    min-width: 2560px;
+    max-width: 2560px;
+    margin: 0;
+    padding: 0;
+    top: calc(1440px * 0.42);
+    left: calc(2560px * 0.5); /* half of max width */
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%); /*keep it centered*/
+  }
+
+  .App-headribbonh2 {
+    min-width: 2560px;
+    max-width: 2560px;
+    margin: 0;
+    padding: 0;
+    top: calc(1440px * 0.55);
+    left: calc(2560px * 0.5); /* half of max width */
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%); /*keep it centered*/
+  }
+
+  .App-rsvpbutton {
+    min-width: 2560px;
+    max-width: 2560px;
+    margin: 0;
+    padding: 0;
+    top: calc(1440px * 0.7);
+    left: calc(2560px * 0.5); /* half of max width */
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%); /*keep it centered*/
+  }
+
+  .App-navbar {
+    min-width: 2560px;
+    max-width: 2560px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: calc(1440px * 0.05);
+  }
 }
 
 @media only screen and (max-device-width: 1920px) and (min-device-width: 1281px) {
@@ -40,68 +154,66 @@
   /* divs */ 
   
   .App-headribbon {
-    max-width: 100%;
+    min-width: 1920px;
+    max-width: 1920px;
     font-size: 2em;
   }
   
-}
+  .App-headribbonimage {
+    min-width: 1920px;
+    max-width: 1920px;
+    opacity: 0.5;
+  }
 
-/* divs */
+  .App-headribbonh1 {
+    min-width: 1920px;
+    max-width: 1920px;
+    margin: 0;
+    padding: 0;
+    top: calc(1080px * 0.42);
+    left: calc(1920px * 0.5); /* half of max width */
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%); /*keep it centered*/
+  }
 
-.App-headribbonimage {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  opacity: 0.5;
-}
+  .App-headribbonh2 {
+    min-width: 1920px;
+    max-width: 1920px;
+    margin: 0;
+    padding: 0;
+    top: calc(1080px * 0.55);
+    left: calc(1920px * 0.5); /* half of max width */
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%); /*keep it centered*/
+  }
 
-.App-headribbonh1 {
-  margin: 0;
-  padding: 0;
-  top: 47%;
-  left: 50%; /* half of max width */
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  transform: translate(-50%, -50%); /*keep it centered*/
-}
+  .App-rsvpbutton {
+    min-width: 1920px;
+    max-width: 1920px;
+    margin: 0;
+    padding: 0;
+    top: calc(1080px * 0.7);
+    left: calc(1920px * 0.5); /* half of max width */
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%); /*keep it centered*/
+  }
 
-.App-headribbonh2 {
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  top: 70%;
-  left: 50%; /* half of max width */
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  transform: translate(-50%, -50%); /*keep it centered*/
-}
-
-.App-rsvpbutton {
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  top: 80%;
-  left: 50%; /* half of max width */
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  transform: translate(-50%, -50%); /*keep it centered*/
-}
-
-.App-navbar {
-  min-width: 100%;
-  margin: 0;
-  padding: 0;
-  top: 8%;
-  left: 50%; /* half of max width */
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  transform: translate(-50%, -50%); /*keep it centered*/
+  .App-navbar {
+    min-width: 1920px;
+    max-width: 1920px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: calc(1080px * 0.05);
+  }
 }
 
 /* components */
@@ -114,13 +226,21 @@
   font-size: 550%;
   color: white;
   font-family: "DomLovesMary Pro";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /*keep it centered*/
 }
 
 .App-h2 {
-  font-size: 100%; /* should not be in em since the percentage is based on the em in App-headribbon */
+  font-size: 100%;
   color: white;
   font-family: "Times New Roman";
   font-weight: lighter;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /*keep it centered*/
 }
 
 @keyframes App-logo-spin {
