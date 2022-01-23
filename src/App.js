@@ -260,9 +260,6 @@ class App extends Component {
                         <h2 className="App-h2">August 20, 2022</h2>
                     </div>
                     <div className="App-rsvpbutton">
-                        <HeaderButton variant="contained" size="large" onClick={this.createItem}>
-                            Add task
-                        </HeaderButton>
                         <HeaderButton variant="contained" size="large" onClick={this.verifyToken}>
                             RSVP
                         </HeaderButton>
