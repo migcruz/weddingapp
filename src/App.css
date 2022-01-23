@@ -111,13 +111,13 @@
 }
 
 .App-h1 {
-  font-size: 5.5em;
+  font-size: 550%;
   color: white;
   font-family: "DomLovesMary Pro";
 }
 
 .App-h2 {
-  font-size: 1em;
+  font-size: 100%; /* should not be in em since the percentage is based on the em in App-headribbon */
   color: white;
   font-family: "Times New Roman";
   font-weight: lighter;
