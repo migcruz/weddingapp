@@ -25,7 +25,7 @@ const HeaderButton = styled(Button)({
     fontSize: '70%',
     fontWeight: '100',
     color: 'hsla(0, 0%, 100%, 1)', //Font color
-    padding: '1em 4em',  //em is relative to font size
+    padding: '2.75rem 11rem',  //em is relative to font size
     border: '1px solid',
     borderRadius: '1px',
     lineHeight: 1.5,
