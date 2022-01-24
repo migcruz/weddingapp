@@ -243,12 +243,20 @@ class App extends Component {
     };
 
     render() {
-        console.log(this.state.currentGuest)
-        console.log('In Render')
-        console.log(this.state.activeItem)
+        // console.log(this.state.currentGuest)
+        // console.log(this.state.activeItem)
+        console.log('In Render: ', window.screen.width, ' ', window.devicePixelRatio)
+
+        var bgphoto;
+        if (window.screen.width > 1921) {
+            bgphoto = photo_paths[1].value[1];
+        }
+        else {
+            bgphoto = photo_paths[0].value[1];
+        }
         return (
             <main className="content">
-                <Image className="App-headribbonimage" src={photo_paths[1].value[1]}/>
+                <Image className="App-headribbonimage" src={bgphoto}/>
                 <div className="App-headribbon">
                     <div className="App-navbar">
                         <NavBar/>
