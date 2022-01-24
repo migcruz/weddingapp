@@ -24,8 +24,6 @@
   }
   
   .App-headribbonimage {
-    min-width: 3840px;
-    max-width: 3840px;
     opacity: 0.5;
     display: block;
     height: auto;
@@ -34,6 +32,7 @@
     width: 100%;
     top: 0px;
     left: 0px;
+    position: absolute;
   }
 
   .App-headribbonh1 {
@@ -100,19 +99,6 @@
     max-width: 2560px;
     font-size: 2.666666666667rem;
   }
-  
-  .App-headribbonimage {
-    min-width: 2560px;
-    max-width: 2560px;
-    opacity: 0.5;
-    display: block;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    top: 0px;
-    left: 0px;
-  }
 
   .App-headribbonh1 {
     min-width: 2560px;
@@ -174,19 +160,6 @@
     max-width: 1920px;
     font-size: 2rem;
   }
-  
-  .App-headribbonimage {
-    min-width: 1920px;
-    max-width: 1920px;
-    opacity: 0.5;
-    display: block;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    top: 0px;
-    left: 0px;
-  }
 
   .App-headribbonh1 {
     min-width: 1920px;
@@ -237,6 +210,18 @@
     position: absolute;
     top: calc(1080px * 0.05);
   }
+}
+
+.App-headribbonimage {
+  opacity: 0.5;
+  display: block;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  position: absolute;
 }
 
 /* components */
