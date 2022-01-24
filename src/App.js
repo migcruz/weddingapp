@@ -256,7 +256,7 @@ class App extends Component {
         }
         return (
             <main className="content">
-                <Image className="App-headribbonimage" src={bgphoto}/>
+                <Image className="App-headribbonimage" src={bgphoto} style={{ maxWidth: window.screen.width, minWidth: window.screen.width }} />
                 <div className="App-headribbon">
                     <div className="App-navbar">
                         <NavBar/>
