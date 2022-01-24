@@ -6,7 +6,8 @@ import { styled } from '@mui/material/styles';
 
 const NavBarBox = styled(Box)({
     width: 'inherit',
-    border: '1px solid',
+    borderTop: '1px solid',
+    borderBottom: '1px solid',
     borderRadius: '1px',
     backgroundColor: 'hsla(0, 0%, 100%, 0.15)',
     borderColor: 'hsla(0, 0%, 100%, 1)',
