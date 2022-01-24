@@ -19,7 +19,7 @@ const photo_paths = [
 ];
 
 const HeaderButton = styled(Button)({
-    position: 'relative', //use for multiple items in div or else they will stack
+    // position: 'relative', //use for multiple items in div or else they will stack
     boxShadow: 'none',
     textTransform: 'none',
     fontSize: '70%',
