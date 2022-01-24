@@ -37,7 +37,7 @@
     margin: 0;
     padding: 0;
     top: calc(2160px * 0.42);
-    left: calc(3840px * 0.48); /* half of max width */
+    left: calc(3840px * 0.47); /* half of max width */
     position: absolute;
     align-items: center;
     justify-content: center;
@@ -50,7 +50,7 @@
     margin: 0;
     padding: 0;
     top: calc(2160px * 0.55);
-    left: calc(3840px * 0.48); /* half of max width */
+    left: calc(3840px * 0.47); /* half of max width */
     position: absolute;
     align-items: center;
     justify-content: center;
@@ -63,7 +63,7 @@
     margin: 0;
     padding: 0;
     top: calc(2160px * 0.7);
-    left: calc(3840px * 0.48); /* half of max width */
+    left: calc(3840px * 0.47); /* half of max width */
     display: flex;
     flex-direction: row;
     position: absolute;
@@ -106,7 +106,7 @@
     margin: 0;
     padding: 0;
     top: calc(1440px * 0.42);
-    left: calc(2560px * 0.48); /* half of max width */
+    left: calc(2560px * 0.47); /* half of max width */
     position: absolute;
     align-items: center;
     justify-content: center;
@@ -119,7 +119,7 @@
     margin: 0;
     padding: 0;
     top: calc(1440px * 0.55);
-    left: calc(2560px * 0.48); /* half of max width */
+    left: calc(2560px * 0.47); /* half of max width */
     position: absolute;
     align-items: center;
     justify-content: center;
@@ -132,7 +132,7 @@
     margin: 0;
     padding: 0;
     top: calc(1440px * 0.7);
-    left: calc(2560px * 0.48); /* half of max width */
+    left: calc(2560px * 0.47); /* half of max width */
     display: flex;
     flex-direction: row;
     position: absolute;
@@ -175,7 +175,7 @@
     margin: 0;
     padding: 0;
     top: calc(1080px * 0.42);
-    left: calc(1920px * 0.48); /* half of max width */
+    left: calc(1920px * 0.47); /* half of max width */
     position: absolute;
     align-items: center;
     justify-content: center;
@@ -188,7 +188,7 @@
     margin: 0;
     padding: 0;
     top: calc(1080px * 0.55);
-    left: calc(1920px * 0.48); /* half of max width */
+    left: calc(1920px * 0.47); /* half of max width */
     position: absolute;
     align-items: center;
     justify-content: center;
@@ -201,7 +201,7 @@
     margin: 0;
     padding: 0;
     top: calc(1080px * 0.7);
-    left: calc(1920px * 0.48); /* half of max width */
+    left: calc(1920px * 0.47); /* half of max width */
     display: flex;
     flex-direction: row;
     position: absolute;
