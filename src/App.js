@@ -252,11 +252,11 @@ class App extends Component {
             bgphoto = photo_paths[1].value[1];
         }
         else {
-            bgphoto = photo_paths[0].value[1];
+            bgphoto = photo_paths[1].value[1];
         }
         return (
             <main className="content">
-                <Image className="App-headribbonimage" src={bgphoto} style={{ maxWidth: window.screen.width, minWidth: window.screen.width }} />
+                <Image className="App-headribbonimage" src={photo_paths[1].value[1]} style={{ maxWidth: window.screen.width, minWidth: window.screen.width }} />
                 <div className="App-headribbon">
                     <div className="App-navbar">
                         <NavBar/>
