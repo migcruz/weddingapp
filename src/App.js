@@ -22,7 +22,7 @@ const HeaderButton = styled(Button)({
     // position: 'relative', //use for multiple items in div or else they will stack
     boxShadow: 'none',
     textTransform: 'none',
-    fontSize: '70%',
+    fontSize: window.screen.height * 0.019,
     fontWeight: '100',
     color: 'hsla(0, 0%, 100%, 1)', //Font color
     padding: '1em 4em',  //em is relative to font size
@@ -247,27 +247,27 @@ class App extends Component {
         // console.log(this.state.activeItem)
         console.log('In Render: ', window.screen.width, ' ', window.devicePixelRatio)
 
-        var bgphoto;
-        if (window.screen.width > 1921) {
-            bgphoto = photo_paths[1].value[1];
-        }
-        else {
-            bgphoto = photo_paths[1].value[1];
-        }
+        // var bgphoto;
+        // if (window.screen.width > 1921) {
+        //     bgphoto = photo_paths[1].value[1];
+        // }
+        // else {
+        //     bgphoto = photo_paths[1].value[1];
+        // }
         return (
             <main className="content">
                 <Image className="App-headribbonimage" src={photo_paths[1].value[1]} style={{ maxWidth: window.screen.width, minWidth: window.screen.width }} />
                 <div className="App-headribbon">
-                    <div className="App-navbar">
+                    <div className="App-navbar" style={{ top: window.screen.height * 0.05 }}>
                         <NavBar/>
                     </div>
-                    <div className="App-headribbonh1">
-                        <h1 className="App-h1">Miguel & Jessica</h1>
+                    <div className="App-headribbonh1" style={{ top: window.screen.height * 0.42, left: window.screen.width * 0.50 }}>
+                        <h1 className="App-h1" style={{ fontSize:  window.screen.height * 0.15 }}>Miguel & Jessica</h1>
                     </div>
-                    <div className="App-headribbonh2">
-                        <h2 className="App-h2">August 20, 2022</h2>
+                    <div className="App-headribbonh2" style={{ top: window.screen.height * 0.60, left: window.screen.width * 0.50 }}>
+                        <h2 className="App-h2" style={{ fontSize:  window.screen.height * 0.027 }}>August 20, 2022</h2>
                     </div>
-                    <div className="App-rsvpbutton">
+                    <div className="App-rsvpbutton" style={{ top: window.screen.height * 0.8, left: window.screen.width * 0.50 }}>
                         <HeaderButton variant="contained" size="large" onClick={this.verifyToken}>
                             RSVP
                         </HeaderButton>

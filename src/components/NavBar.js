@@ -17,7 +17,7 @@ const NavBarBox = styled(Box)({
 const NavBarTab = styled(Tab)({
     color: 'hsla(0, 0%, 100%, 1)', //Font color
     padding: '0.6% 2.4%',
-    fontSize: '40%',
+    fontSize: window.screen.height * 0.01,
     fontWeight: '100',
     '&:hover': {
         backgroundColor: 'hsla(0, 0%, 100%, 0.50)',
