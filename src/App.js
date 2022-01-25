@@ -258,7 +258,7 @@ class App extends Component {
             <main className="content">
                 <Image className="App-headribbonimage" src={photo_paths[1].value[1]} style={{ maxWidth: window.screen.width, minWidth: window.screen.width }} />
                 <div className="App-headribbon">
-                    <div className="App-navbar" style={{ top: window.screen.height * 0.05 }}>
+                    <div className="App-navbar" style={{ top: window.screen.height * 0.05, maxWidth: window.screen.width, minWidth: window.screen.width }}>
                         <NavBar/>
                     </div>
                     <div className="App-headribbonh1" style={{ top: window.screen.height * 0.42, left: window.screen.width * 0.50 }}>
