@@ -13,175 +13,32 @@
   }
 }
 
-@media only screen and (max-width: 3840px) and (min-width: 2561px) {
+/* @media only screen and (max-device-width: 3840px) and (min-width: 2561px) { */
 
-  /* divs */ 
+
+/* divs */ 
   
-  .App-headribbon {
-    min-width: 3840px;
-    max-width: 3840px;
-    font-size: 4rem;
-  }
-
-  .App-headribbonh1 {
-    min-width: 3840px;
-    max-width: 3840px;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    transform: translate(-50%, -50%); /*keep it centered*/
-  }
-
-  .App-headribbonh2 {
-    min-width: 3840px;
-    max-width: 3840px;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    transform: translate(-50%, -50%); /*keep it centered*/
-  }
-
-  .App-rsvpbutton {
-    min-width: 3840px;
-    max-width: 3840px;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    transform: translate(-50%, -50%); /*keep it centered*/
-  }
-
-  .App-navbar {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-  }
+.App-headribbon {
+  font-size: 4rem;
 }
 
-@media only screen and (max-width: 2560px) and (min-width: 1921px) {
-
-  /* divs */ 
-  
-  .App-headribbon {
-    min-width: 2560px;
-    max-width: 2560px;
-    font-size: 2.666666666667rem;
-  }
-
-  .App-headribbonh1 {
-    min-width: 2560px;
-    max-width: 2560px;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    transform: translate(-50%, -50%); /*keep it centered*/
-  }
-
-  .App-headribbonh2 {
-    min-width: 2560px;
-    max-width: 2560px;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    transform: translate(-50%, -50%); /*keep it centered*/
-  }
-
-  .App-rsvpbutton {
-    min-width: 2560px;
-    max-width: 2560px;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    transform: translate(-50%, -50%); /*keep it centered*/
-  }
-
-  .App-navbar {
-    margin: 0;
-    padding: 0;
-    position: absolute;
-  }
+.App-headribbonh1 {
+  position: absolute;
 }
 
-@media only screen and (max-width: 1920px) and (min-width: 1281px) {
+.App-headribbonh2 {
+  position: absolute;
+}
 
-  /* divs */ 
-  
-  .App-headribbon {
-    min-width: 1920px;
-    max-width: 1920px;
-    font-size: 2rem;
-  }
+.App-rsvpbutton {
+  position: absolute;
+}
 
-  .App-headribbonh1 {
-    min-width: 1920px;
-    max-width: 1920px;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    transform: translate(-50%, -50%); /*keep it centered*/
-  }
-
-  .App-headribbonh2 {
-    min-width: 1920px;
-    max-width: 1920px;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    transform: translate(-50%, -50%); /*keep it centered*/
-  }
-
-  .App-rsvpbutton {
-    min-width: 1920px;
-    max-width: 1920px;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    transform: translate(-50%, -50%); /*keep it centered*/
-  }
-
-  .App-navbar {
-    margin: 0;
-    padding: 0;
-    position: absolute;
-  }
+.App-navbar {
+  position: absolute;
 }
 
 .App-headribbonimage {
-  opacity: 0.5;
-  display: block;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  top: 0px;
-  left: 0px;
   position: absolute;
 }
 
@@ -192,25 +49,11 @@
 }
 
 .App-h1 {
-  /* font-size: 550%; */
-  color: white;
   font-family: "DomLovesMary Pro";
-  font-weight: lighter;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /*keep it centered*/
 }
 
 .App-h2 {
-  /* font-size: 100%; */
-  color: white;
   font-family: "Times New Roman";
-  font-weight: lighter;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /*keep it centered*/
 }
 
 @keyframes App-logo-spin {

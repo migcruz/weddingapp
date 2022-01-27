@@ -18,6 +18,100 @@ const photo_paths = [
     {key: "photo2", value: ["photo2", "/static/bgphoto.png"]}
 ];
 
+// CSS styles, will override styles in .css file if there is conflict
+const appHeadRibbon= {
+    maxWidth: window.screen.width,
+    minWidth: window.screen.width,
+    // fontSize: '4rem',
+}
+
+const appHeadRibbonImage = {
+    maxWidth: window.screen.width,
+    minWidth: window.screen.width,
+    opacity: 0.5,
+    display: 'block',
+    height: 'auto',
+    margin: 0,
+    padding: 0,
+    width: '100%',
+    top: '0px',
+    left: '0px',
+}
+
+const appHeadRibbonH1 = {
+    maxWidth: window.screen.width, 
+    minWidth: window.screen.width,
+    top: window.screen.height * 0.42,
+    left: window.screen.width * 0.50,
+    width: '100%',
+    margin: 0,
+    padding: 0,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transform: 'translate(-50%, -50%)', // keep it centered
+}
+
+const appHeadRibbonH2 = {
+    maxWidth: window.screen.width, 
+    minWidth: window.screen.width,
+    top: window.screen.height * 0.60,
+    left: window.screen.width * 0.50,
+    width: '100%',
+    margin: 0,
+    padding: 0,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transform: 'translate(-50%, -50%)', // keep it centered
+}
+
+const appH1 = {
+    fontSize:  window.screen.height * 0.15,
+    color: 'white',
+    fontWeight: 'lighter',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)', // keep it centered
+}
+
+const appH2 = {
+    fontSize:  window.screen.height * 0.027,
+    color: 'white',
+    fontWeight: 'lighter',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)', // keep it centered
+}
+
+const appNavBar = {
+    top: window.screen.height * 0.05, 
+    maxWidth: window.screen.width, 
+    minWidth: window.screen.width,
+    width: '100%',
+    margin: 0,
+    padding: 0,
+    position: 'absolute',
+}
+
+const appRsvpButton = {
+    maxWidth: window.screen.width, 
+    minWidth: window.screen.width,
+    top: window.screen.height * 0.8,
+    left: window.screen.width * 0.50,
+    width: '100%',
+    margin: 0,
+    padding: 0,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transform: 'translate(-50%, -50%)', // keep it centered
+    display: 'flex',
+    flexDirection: 'row',
+}
+
 const HeaderButton = styled(Button)({
     // position: 'relative', //use for multiple items in div or else they will stack
     boxShadow: 'none',
@@ -51,6 +145,7 @@ const HeaderButton = styled(Button)({
     },
 });
 
+// The App
 class App extends Component {
 
     constructor(props) {
@@ -256,18 +351,18 @@ class App extends Component {
         // }
         return (
             <main className="content">
-                <Image className="App-headribbonimage" src={photo_paths[1].value[1]} style={{ maxWidth: window.screen.width, minWidth: window.screen.width }} />
-                <div className="App-headribbon">
-                    <div className="App-navbar" style={{ top: window.screen.height * 0.05, maxWidth: window.screen.width, minWidth: window.screen.width }}>
+                <Image className="App-headribbonimage" src={photo_paths[1].value[1]} style={appHeadRibbonImage} />
+                <div className="App-headribbon" style={appHeadRibbon}>
+                    <div className="App-navbar" style={appNavBar}>
                         <NavBar/>
                     </div>
-                    <div className="App-headribbonh1" style={{ top: window.screen.height * 0.42, left: window.screen.width * 0.50 }}>
-                        <h1 className="App-h1" style={{ fontSize:  window.screen.height * 0.15 }}>Miguel & Jessica</h1>
+                    <div className="App-headribbonh1" style={appHeadRibbonH1}>
+                        <h1 className="App-h1" style={appH1}>Miguel & Jessica</h1>
                     </div>
-                    <div className="App-headribbonh2" style={{ top: window.screen.height * 0.60, left: window.screen.width * 0.50 }}>
-                        <h2 className="App-h2" style={{ fontSize:  window.screen.height * 0.027 }}>August 20, 2022</h2>
+                    <div className="App-headribbonh2" style={appHeadRibbonH2}>
+                        <h2 className="App-h2" style={appH2}>August 20, 2022</h2>
                     </div>
-                    <div className="App-rsvpbutton" style={{ top: window.screen.height * 0.8, left: window.screen.width * 0.50 }}>
+                    <div className="App-rsvpbutton" style={appRsvpButton}>
                         <HeaderButton variant="contained" size="large" onClick={this.verifyToken}>
                             RSVP
                         </HeaderButton>
