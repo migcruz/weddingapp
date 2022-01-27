@@ -119,7 +119,10 @@ const HeaderButton = styled(Button)({
     fontSize: window.screen.height * 0.019,
     fontWeight: '100',
     color: 'hsla(0, 0%, 100%, 1)', //Font color
-    padding: '1em 4em',  //em is relative to font size
+    paddingTop: window.screen.height * 0.02,
+    paddingBottom: window.screen.height * 0.02,
+    paddingLeft: window.screen.height * 0.08,
+    paddingRight:  window.screen.height * 0.08,
     border: '1px solid',
     borderRadius: '1px',
     lineHeight: 1.5,
