@@ -11,16 +11,16 @@ const NavBarBox = styled(Box)({
     borderRadius: '1px',
     backgroundColor: 'hsla(0, 0%, 100%, 0.15)',
     borderColor: 'hsla(0, 0%, 100%, 1)',
-    padding: window.screen.height * 0.015,
+    padding: window.screen.availHeight * 0.015,
 });
 
 const NavBarTab = styled(Tab)({
     color: 'hsla(0, 0%, 100%, 1)', //Font color
-    paddingTop: window.screen.height * 0.01,
-    paddingBottom: window.screen.height * 0.01,
-    paddingLeft: window.screen.height * 0.04,
-    paddingRight:  window.screen.height * 0.04,
-    fontSize: window.screen.height * 0.01,
+    paddingTop: window.screen.availHeight * 0.01,
+    paddingBottom: window.screen.availHeight * 0.01,
+    paddingLeft: window.screen.availHeight * 0.04,
+    paddingRight:  window.screen.availHeight * 0.04,
+    fontSize: window.screen.availHeight * 0.01,
     fontWeight: '100',
     '&:hover': {
         backgroundColor: 'hsla(0, 0%, 100%, 0.50)',

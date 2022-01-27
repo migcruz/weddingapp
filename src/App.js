@@ -20,14 +20,16 @@ const photo_paths = [
 
 // CSS styles, will override styles in .css file if there is conflict
 const appHeadRibbon= {
-    maxWidth: window.screen.width,
-    minWidth: window.screen.width,
+    maxWidth: window.screen.availWidth,
+    minWidth: window.screen.availWidth,
+    maxHeight: window.screen.availHeight,
+    minHeight: window.screen.availHeight,
     // fontSize: '4rem',
 }
 
 const appHeadRibbonImage = {
-    maxWidth: window.screen.width,
-    minWidth: window.screen.width,
+    maxWidth: window.screen.availWidth,
+    minWidth: window.screen.availWidth,
     opacity: 0.5,
     display: 'block',
     height: 'auto',
@@ -39,10 +41,10 @@ const appHeadRibbonImage = {
 }
 
 const appHeadRibbonH1 = {
-    maxWidth: window.screen.width, 
-    minWidth: window.screen.width,
-    top: window.screen.height * 0.42,
-    left: window.screen.width * 0.50,
+    maxWidth: window.screen.availWidth, 
+    minWidth: window.screen.availWidth,
+    top: window.screen.availHeight * 0.42,
+    left: window.screen.availWidth * 0.50,
     width: '100%',
     margin: 0,
     padding: 0,
@@ -53,10 +55,10 @@ const appHeadRibbonH1 = {
 }
 
 const appHeadRibbonH2 = {
-    maxWidth: window.screen.width, 
-    minWidth: window.screen.width,
-    top: window.screen.height * 0.60,
-    left: window.screen.width * 0.50,
+    maxWidth: window.screen.availWidth, 
+    minWidth: window.screen.availWidth,
+    top: window.screen.availHeight * 0.60,
+    left: window.screen.availWidth * 0.50,
     width: '100%',
     margin: 0,
     padding: 0,
@@ -67,7 +69,7 @@ const appHeadRibbonH2 = {
 }
 
 const appH1 = {
-    fontSize:  window.screen.height * 0.15,
+    fontSize:  window.screen.availHeight * 0.15,
     color: 'white',
     fontWeight: 'lighter',
     position: 'absolute',
@@ -77,7 +79,7 @@ const appH1 = {
 }
 
 const appH2 = {
-    fontSize:  window.screen.height * 0.027,
+    fontSize:  window.screen.availHeight * 0.027,
     color: 'white',
     fontWeight: 'lighter',
     position: 'absolute',
@@ -87,9 +89,9 @@ const appH2 = {
 }
 
 const appNavBar = {
-    top: window.screen.height * 0.05, 
-    maxWidth: window.screen.width, 
-    minWidth: window.screen.width,
+    top: window.screen.availHeight * 0.05, 
+    maxWidth: window.screen.availWidth, 
+    minWidth: window.screen.availWidth,
     width: '100%',
     margin: 0,
     padding: 0,
@@ -97,10 +99,10 @@ const appNavBar = {
 }
 
 const appRsvpButton = {
-    maxWidth: window.screen.width, 
-    minWidth: window.screen.width,
-    top: window.screen.height * 0.8,
-    left: window.screen.width * 0.50,
+    maxWidth: window.screen.availWidth, 
+    minWidth: window.screen.availWidth,
+    top: window.screen.availHeight * 0.8,
+    left: window.screen.availWidth * 0.50,
     width: '100%',
     margin: 0,
     padding: 0,
@@ -116,13 +118,13 @@ const HeaderButton = styled(Button)({
     // position: 'relative', //use for multiple items in div or else they will stack
     boxShadow: 'none',
     textTransform: 'none',
-    fontSize: window.screen.height * 0.019,
+    fontSize: window.screen.availHeight * 0.019,
     fontWeight: '100',
     color: 'hsla(0, 0%, 100%, 1)', //Font color
-    paddingTop: window.screen.height * 0.02,
-    paddingBottom: window.screen.height * 0.02,
-    paddingLeft: window.screen.height * 0.08,
-    paddingRight:  window.screen.height * 0.08,
+    paddingTop: window.screen.availHeight * 0.02,
+    paddingBottom: window.screen.availHeight * 0.02,
+    paddingLeft: window.screen.availHeight * 0.08,
+    paddingRight:  window.screen.availHeight * 0.08,
     border: '1px solid',
     borderRadius: '1px',
     lineHeight: 1.5,
@@ -343,10 +345,10 @@ class App extends Component {
     render() {
         // console.log(this.state.currentGuest)
         // console.log(this.state.activeItem)
-        console.log('In Render: ', window.screen.width, ' ', window.devicePixelRatio)
+        console.log('In Render: ', window.screen.availWidth, ' ', window.devicePixelRatio)
 
         // var bgphoto;
-        // if (window.screen.width > 1921) {
+        // if (window.screen.availWidth > 1921) {
         //     bgphoto = photo_paths[1].value[1];
         // }
         // else {
