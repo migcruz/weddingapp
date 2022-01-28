@@ -62,6 +62,7 @@ class NavBar extends React.Component {
             <NavBarBox>
                 <Tabs value={this.state.index} onChange={this.handleChange} indicatorColor='' centered>
                 <NavBarTab label="Home" />
+                <NavBarTab label="About us" />
                 <NavBarTab label="Schedule" />
                 <NavBarTab label="Gift Registry" />
                 </Tabs>

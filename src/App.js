@@ -340,7 +340,7 @@ class App extends Component {
             // Home
             case 0:
 
-                // Construct style dict
+                // Construct FX style dict
                 var appHomeHeadRibbon = {};
                 Object.assign(appHomeHeadRibbon, appHeadRibbon) // copy dict
                 appHomeHeadRibbon['animation'] = 'HomeFadeIn 1s';
@@ -365,10 +365,37 @@ class App extends Component {
                     </div>
                 );
             
-            // Schedule
+            // About us
             case 1:
 
-                // Construct style dict
+                // Construct FX style dict
+                var appAboutUsHeadRibbon = {};
+                Object.assign(appAboutUsHeadRibbon, appHeadRibbon) // copy dict
+                appAboutUsHeadRibbon['animation'] = 'AboutUsFadeIn 1s';
+                appAboutUsHeadRibbon['-webkit-animation'] = 'AboutUsFadeIn 1s';
+                appAboutUsHeadRibbon['-moz-animatio'] = 'AboutUsFadeIn 1s';
+                appAboutUsHeadRibbon['-o-animation'] = 'AboutUsFadeIn 1s';
+                appAboutUsHeadRibbon['-ms-animation'] = 'AboutUsFadeIn 1s';
+
+                return (
+                    <div className="App-HomeRibbon" style={appAboutUsHeadRibbon}>
+                        <div className="App-headribbonh1" style={appHeadRibbonH1}>
+                            <Container text>
+                                <p style={{color: 'white'}}>
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede link mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+                                </p>
+                                <p style={{color: 'white'}}>
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede link mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+                                </p>
+                            </Container>
+                        </div>
+                    </div>
+                );
+            
+            // Schedule
+            case 2:
+
+                // Construct FX style dict
                 var appScheduleHeadRibbon = {};
                 Object.assign(appScheduleHeadRibbon, appHeadRibbon) // copy dict
                 appScheduleHeadRibbon['animation'] = 'ScheduleFadeIn 1s';
@@ -386,9 +413,9 @@ class App extends Component {
                 );
             
             // Gift Registry
-            case 2:
+            case 3:
 
-                // Construct style dict
+                // Construct FX style dict
                 var appGiftRegHeadRibbon = {};
                 Object.assign(appGiftRegHeadRibbon, appHeadRibbon) // copy dict
                 appGiftRegHeadRibbon['animation'] = 'GiftRegFadeIn 1s';
@@ -428,14 +455,6 @@ class App extends Component {
                     />
                 </div>
                 {this.renderRibbonContent()}
-                <Container text>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede link mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
-                    </p>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede link mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
-                    </p>
-                </Container>
                 <div className="row ">
                     <div className="col-md-6 col-sm-10 mx-auto p-0">
                         <div className="card p-3">

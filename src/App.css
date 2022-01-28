@@ -82,6 +82,32 @@
   100% {opacity:1;}
 }
 
+/* About us FX */
+@keyframes AboutUsFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes AboutUsFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes AboutUsFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes AboutUsFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes AboutUsFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
 /* Schedule FX */
 @keyframes ScheduleFadeIn {
   0% {opacity:0;}

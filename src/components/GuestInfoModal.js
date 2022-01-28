@@ -305,7 +305,7 @@ class GuestInfoModal extends React.Component {
 					autoFocus
 					margin="dense"
 					id="plusone"
-					label="*Your plus one (if any)"
+					label="*Your plus one (if none, put none)"
 					type="text"
 					fullWidth
 					variant="standard"
