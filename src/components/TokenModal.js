@@ -226,17 +226,17 @@ class TokenModal extends React.Component {
 		const { toggle, onSave, onCancel } = this.props;
         return (
 			<Dialog open={toggle}>
-				<DialogTitle>Oops! There was an Error :(</DialogTitle>
+				<DialogTitle>:( Oops! There was an Error. Code: {this.state.errorMessage.slice(-3)}</DialogTitle>
 				<DialogContent dividers>
 					<Box sx={{ m: 2 }}>
 						<DialogContentText sx={{ color: 'red' }}>
-							Error: {this.state.errorMessage}
+							We're sorry, we could not find your information for guest: {this.state.firstName} {this.state.lastName}.
 						</DialogContentText>
 					</Box>
 					<Divider variant="middle" />
 					<Box sx={{ m: 2 }}>
 						<DialogContentText sx={{ color: 'black' }}>
-							We're sorry, we could not find your information for guest: {this.state.firstName} {this.state.lastName}. Please retry or click next to register as a new guest.
+							Please retry or click next to register as a new guest.
 						</DialogContentText>
 					</Box>
 				</DialogContent>

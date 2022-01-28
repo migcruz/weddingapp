@@ -181,7 +181,7 @@ class GuestInfoModal extends React.Component {
             .then(res => this.setState({ activeItem: activeItem, errorMessage: '', isError: false }, () => {
 				this.handlePut();
             }))
-            .catch(err => this.setState({ activeItem: activeItem, errorMessage: err.toJSON().message, isError: true }, () => {
+            .catch(err => this.setState({ activeItem: activeItem, errorMessage: err.toJSON().message }, () => {
                 console.log(this.state.errorMessage);
 
 				// User not found in db, so post a new entry

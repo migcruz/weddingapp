@@ -146,10 +146,10 @@ const HeaderButton = styled(Button)({
         backgroundColor: 'hsla(0, 50%, 70%, 0.7)',
         borderColor: 'hsla(0, 0%, 100%, 1)',
     },
-    '&:focus': {
-        boxShadow: 'none',
-        boxShadow: '0 0 0 0.2rem rgba(217,140,140,.7)',
-    },
+    // '&:focus': {
+    //     boxShadow: 'none',
+    //     boxShadow: '0 0 0 0.2rem rgba(217,140,140,.7)',
+    // },
 });
 
 // The App
