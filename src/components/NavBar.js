@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -27,30 +27,47 @@ const NavBarTab = styled(Tab)({
         borderColor: 'hsla(0, 0%, 100%, 1)',
         color: 'hsla(0, 0%, 1%, 1)',
         boxShadow: 'none',
+        transitionDuration: '0.75s',
     },
     '&.Mui-selected': {
         backgroundColor: 'hsla(0, 50%, 70%, 0.7)',
         borderColor: 'hsla(0, 0%, 100%, 1)',
         color: 'hsla(0, 0%, 1%, 1)',
         boxShadow: 'none',
+        transitionDuration: '0.75s',
     },
 });
 
+class NavBar extends React.Component {
 
-export default function NavBar() {
-  const [value, setValue] = React.useState(0);
+	constructor(props) {
+		super(props);
+		this.state = {
+			activeItem: this.props.activeItem,
+			index: 0,
+		};
+	}
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    handleChange = (event, newValue) => {
+        const { onNavBarChange } = this.props;
 
-  return (
-    <NavBarBox>
-      <Tabs value={value} onChange={handleChange} indicatorColor='' centered>
-        <NavBarTab label="Home" />
-        <NavBarTab label="Schedule" />
-        <NavBarTab label="Gift Registry" />
-      </Tabs>
-    </NavBarBox>
-  );
+		// async callback
+        this.setState({ index: newValue}, () => {
+			onNavBarChange(this.state.index);
+		});
+	};
+  
+    render() {
+        return (
+            <NavBarBox>
+                <Tabs value={this.state.index} onChange={this.handleChange} indicatorColor='' centered>
+                <NavBarTab label="Home" />
+                <NavBarTab label="Schedule" />
+                <NavBarTab label="Gift Registry" />
+                </Tabs>
+            </NavBarBox>
+        );
+    }
 }
+
+export default NavBar;

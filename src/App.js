@@ -19,11 +19,11 @@ const photo_paths = [
 ];
 
 // CSS styles, will override styles in .css file if there is conflict
-const appHeadRibbon= {
+const appHeadRibbon = {
     maxWidth: window.screen.availWidth,
     minWidth: window.screen.availWidth,
-    maxHeight: window.screen.availHeight,
-    minHeight: window.screen.availHeight,
+    // maxHeight: window.screen.availHeight,
+    // minHeight: window.screen.availHeight,  // createx extra space if enabled
     // fontSize: '4rem',
 }
 
@@ -38,6 +38,7 @@ const appHeadRibbonImage = {
     width: '100%',
     top: '0px',
     left: '0px',
+    transitionDuration: '1s',
 }
 
 const appHeadRibbonH1 = {
@@ -138,6 +139,7 @@ const HeaderButton = styled(Button)({
         borderColor: 'hsla(0, 0%, 100%, 1)',
         color: 'hsla(0, 0%, 10%, 1)',
         boxShadow: 'none',
+        transitionDuration: '0.75s',
     },
     '&:active': {
         boxShadow: 'none',
@@ -164,6 +166,7 @@ class App extends Component {
                 lastName: "",
                 email: "",
                 phone: "",
+                plusone: "",
                 allergies: "",
                 rsvp: false,
                 vegan: false,
@@ -177,6 +180,7 @@ class App extends Component {
             currentGuest: {},
             guestInfoModalShow: false,
             tokenModalShow: false,
+            navBarIndex: 0,
         };
     }
 
@@ -268,20 +272,6 @@ class App extends Component {
             this.toggle();  // toggle GuestInfoModal
             this.refreshList()
         });
-        // this.toggle();
-        // if (item.id) {
-        //     axios
-        //         // Because of proxy in package.json, command be shorten as follows:
-        //         // .put(`http://localhost:8000/api/guestlist/${item.id}/`, item)
-        //         .put(`/api/guestlist/${item.token}/`, item)
-        //         .then(res => this.refreshList());
-        //     return;
-        // }
-        // axios
-        //     // Because of proxy in package.json, command be shorten as follows:
-        //     // .post("http://localhost:8000/api/guestlist/", item)
-        //     .post("/api/guestlist/", item)
-        //     .then(res => this.refreshList());
     };
 
     handleTokenModalSubmit = token => {
@@ -290,34 +280,15 @@ class App extends Component {
             this.tokenModalToggle();  // toggle off TokenModal
             this.toggle();  // toggle on GuestInfoModal
         });
+    };
 
-
-        ///////////////////////////////////
-        // // this.tokenModalToggle();
-
-        // //Hash the first and last name
-        // var crypto = require('crypto')
-        // var shasum = crypto.createHash('sha1')
-        // shasum.update(token.firstLastName)
-        // var hashToken = shasum.digest('hex')
-
-        // axios
-        //     // .get("http://localhost:8000/api/guestlist/ABCD4/")
-        //     // Because of proxy in package.json, command be shorten as follows:
-        //     .get(`/api/guestlist/${hashToken}/`)
-        //     .then(res => this.setState({ currentGuest: res.data, activeItem: res.data, guestToken: hashToken }, () => {
-        //         console.log('waiting: ', this.state.activeItem);
-        //         this.tokenModalToggle();  // toggle off TokenModal
-        //         this.toggle();  // toggle on GuestInfoModal
-        //     }))
-        //     .catch(err => console.log(err));
+    onNavBarChange = newValue => {
+        console.log("KKKKKKK: ", newValue);
         
-        // // this.setState({ guestToken: token }, () => {
-
-        // //     console.log('waiting: ', this.state.activeItem);
-        // // });
-        
-        // // TODO: Error handling of bad token
+        // async callback
+        this.setState({ navBarIndex: newValue}, () => {
+			// do nothing
+		});
     };
 
     handleDelete = item => {
@@ -329,7 +300,7 @@ class App extends Component {
     };
 
     createItem = () => {
-        const item = { id: "", token: "", firstName: "", lastName: "", email: "", phone: "", allergies: "", rsvp: false, vegan: false, vegetarian: false, url: "" };
+        const item = { id: "", token: "", firstName: "", lastName: "", email: "", phone: "", plusone: "", allergies: "", rsvp: false, vegan: false, vegetarian: false, url: "" };
         this.setState({ activeItem: item, guestInfoModalShow: !this.state.guestInfoModalShow });
     };
 
@@ -341,6 +312,100 @@ class App extends Component {
         const token = { guestToken: "" };
         this.setState({ guestToken: token, tokenModalShow: !this.state.tokenModalShow });
     };
+
+    renderBackgroundImage = () => {
+		if (this.state.navBarIndex === 0) {
+
+			return (
+				<Image className="App-headribbonimage" src={photo_paths[1].value[1]} style={appHeadRibbonImage} />
+			);
+		}
+		else {
+            var appHeadRibbonImageTemp = {};
+            Object.assign(appHeadRibbonImageTemp, appHeadRibbonImage) // copy dict
+            appHeadRibbonImageTemp['opacity'] = 0.1;
+            appHeadRibbonImageTemp['transitionDuration'] = '1s';
+
+			return (
+				<Image className="App-headribbonimage" src={photo_paths[1].value[1]} style={appHeadRibbonImageTemp} />
+			);
+		}
+		
+	};
+
+    renderRibbonContent = () => {
+
+        switch (this.state.navBarIndex) {
+
+            // Home
+            case 0:
+
+                // Construct style dict
+                var appHomeHeadRibbon = {};
+                Object.assign(appHomeHeadRibbon, appHeadRibbon) // copy dict
+                appHomeHeadRibbon['animation'] = 'HomeFadeIn 1s';
+                appHomeHeadRibbon['-webkit-animation'] = 'HomeFadeIn 1s';
+                appHomeHeadRibbon['-moz-animatio'] = 'HomeFadeIn 1s';
+                appHomeHeadRibbon['-o-animation'] = 'HomeFadeIn 1s';
+                appHomeHeadRibbon['-ms-animation'] = 'HomeFadeIn 1s';
+
+                return (
+                    <div className="App-HomeRibbon" style={appHomeHeadRibbon}>
+                        <div className="App-headribbonh1" style={appHeadRibbonH1}>
+                            <h1 className="App-h1" style={appH1}>Miguel & Jessica</h1>
+                        </div>
+                        <div className="App-headribbonh2" style={appHeadRibbonH2}>
+                            <h2 className="App-h2" style={appH2}>August 20, 2022</h2>
+                        </div>
+                        <div className="App-rsvpbutton" style={appRsvpButton}>
+                            <HeaderButton variant="contained" size="large" onClick={this.verifyToken}>
+                                RSVP
+                            </HeaderButton>
+                        </div>
+                    </div>
+                );
+            
+            // Schedule
+            case 1:
+
+                // Construct style dict
+                var appScheduleHeadRibbon = {};
+                Object.assign(appScheduleHeadRibbon, appHeadRibbon) // copy dict
+                appScheduleHeadRibbon['animation'] = 'ScheduleFadeIn 1s';
+                appScheduleHeadRibbon['-webkit-animation'] = 'ScheduleFadeIn 1s';
+                appScheduleHeadRibbon['-moz-animatio'] = 'ScheduleFadeIn 1s';
+                appScheduleHeadRibbon['-o-animation'] = 'ScheduleFadeIn 1s';
+                appScheduleHeadRibbon['-ms-animation'] = 'ScheduleFadeIn 1s';
+
+                return (
+                    <div className="App-HomeRibbon" style={appScheduleHeadRibbon}>
+                        <div className="App-headribbonh1" style={appHeadRibbonH1}>
+                            <h1 className="App-h2" style={appH2}>TBA. Please check back later!</h1>
+                        </div>
+                    </div>
+                );
+            
+            // Gift Registry
+            case 2:
+
+                // Construct style dict
+                var appGiftRegHeadRibbon = {};
+                Object.assign(appGiftRegHeadRibbon, appHeadRibbon) // copy dict
+                appGiftRegHeadRibbon['animation'] = 'GiftRegFadeIn 1s';
+                appGiftRegHeadRibbon['-webkit-animation'] = 'GiftRegFadeIn 1s';
+                appGiftRegHeadRibbon['-moz-animatio'] = 'GiftRegFadeIn 1s';
+                appGiftRegHeadRibbon['-o-animation'] = 'GiftRegFadeIn 1s';
+                appGiftRegHeadRibbon['-ms-animation'] = 'GiftRegFadeIn 1s';
+
+                return (
+                    <div className="App-HomeRibbon" style={appGiftRegHeadRibbon}>
+                        <div className="App-headribbonh1" style={appHeadRibbonH1}>
+                            <h1 className="App-h2" style={appH2}>Working on it!</h1>
+                        </div>
+                    </div>
+                );
+        }
+	};
 
     render() {
         // console.log(this.state.currentGuest)
@@ -356,23 +421,13 @@ class App extends Component {
         // }
         return (
             <main className="content">
-                <Image className="App-headribbonimage" src={photo_paths[1].value[1]} style={appHeadRibbonImage} />
-                <div className="App-headribbon" style={appHeadRibbon}>
-                    <div className="App-navbar" style={appNavBar}>
-                        <NavBar/>
-                    </div>
-                    <div className="App-headribbonh1" style={appHeadRibbonH1}>
-                        <h1 className="App-h1" style={appH1}>Miguel & Jessica</h1>
-                    </div>
-                    <div className="App-headribbonh2" style={appHeadRibbonH2}>
-                        <h2 className="App-h2" style={appH2}>August 20, 2022</h2>
-                    </div>
-                    <div className="App-rsvpbutton" style={appRsvpButton}>
-                        <HeaderButton variant="contained" size="large" onClick={this.verifyToken}>
-                            RSVP
-                        </HeaderButton>
-                    </div>
+                {this.renderBackgroundImage()}
+                <div className="App-navbar" style={appNavBar}>
+                    <NavBar
+                        onNavBarChange={this.onNavBarChange}
+                    />
                 </div>
+                {this.renderRibbonContent()}
                 <Container text>
                     <p>
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede link mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.

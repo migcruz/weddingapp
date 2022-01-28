@@ -34,6 +34,7 @@ class TokenModal extends React.Component {
                 lastName: "",
                 email: "",
                 phone: "",
+				plusone: "",
                 allergies: "",
                 rsvp: false,
                 vegan: false,

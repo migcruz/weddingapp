@@ -39,11 +39,12 @@ class GuestInfoModal extends React.Component {
 			isFirstNameError: false,
 			isLastNameError: false,
 			isEmailError: false,
+			isPlusOneError: false,
 		};
 	}
 
 	handleChange = e => {
-		let { id, value, name, checked } = e.target;
+		let { id, value, name } = e.target;
 		if (e.target.type === "radio") {
 			switch (value) {
 
@@ -143,6 +144,17 @@ class GuestInfoModal extends React.Component {
 		else {
 			this.setState({ isEmailError: false });
 		}
+
+		// Verify plusone
+		tempValue = this.state.activeItem.plusone.replace(/\s+/g, '')  //remove white spaces
+		if (tempValue === '') {
+			this.setState({ isPlusOneError: true });
+			status = true;
+		}
+		else {
+			this.setState({ isPlusOneError: false });
+		}
+
 		return status;
 	};
 
@@ -285,6 +297,42 @@ class GuestInfoModal extends React.Component {
 		
 	};
 
+	renderPlusOne = () => {
+		if (this.state.isPlusOneError) {
+			return (
+				<TextField
+					error
+					autoFocus
+					margin="dense"
+					id="plusone"
+					label="*Your plus one (if any)"
+					type="text"
+					fullWidth
+					variant="standard"
+					helperText="Incorrect entry. Cannot be empty"
+					value={this.state.activeItem.plusone}
+					onChange={this.handleChange}
+				/>
+			);
+		}
+		else {
+			return (
+				<TextField
+					autoFocus
+					margin="dense"
+					id="plusone"
+					label="*Your plus one (if none, put none)"
+					type="text"
+					fullWidth
+					variant="standard"
+					value={this.state.activeItem.plusone}
+					onChange={this.handleChange}
+				/>
+			);
+		}
+		
+	};
+
 	renderOkay = () => {
 		const { toggle, onCancel } = this.props;
 		return (
@@ -299,6 +347,7 @@ class GuestInfoModal extends React.Component {
 					{this.renderFirstName()}
 					{this.renderLastName()}
 					{this.renderEmail()}
+					{this.renderPlusOne()}
 					<TextField
 						autoFocus
 						margin="dense"

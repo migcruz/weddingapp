@@ -18,7 +18,7 @@
 
 /* divs */ 
   
-.App-headribbon {
+.App-HomeRibbon {
   font-size: 4rem;
 }
 
@@ -55,6 +55,88 @@
 .App-h2 {
   font-family: "Times New Roman";
 }
+
+/* Home FX */
+@keyframes HomeFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes HomeFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes HomeFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes HomeFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes HomeFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+/* Schedule FX */
+@keyframes ScheduleFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes ScheduleFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes ScheduleFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes ScheduleFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes ScheduleFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+/* Gift Registry FX */
+@keyframes GiftRegFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes GiftRegFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes GiftRegFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes GiftRegFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes GiftRegFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+
+
+
 
 @keyframes App-logo-spin {
   from {

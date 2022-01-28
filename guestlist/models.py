@@ -8,6 +8,7 @@ class Guestlist(models.Model):
     lastName = models.TextField(default="")
     email = models.TextField(default="")
     phone = models.TextField(default="")
+    plusone = models.TextField(default="")
     allergies = models.TextField(default="")
     rsvp = models.BooleanField(default=False)
     vegan = models.BooleanField(default=False)
