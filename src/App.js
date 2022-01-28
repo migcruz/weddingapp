@@ -343,11 +343,11 @@ class App extends Component {
                 // Construct FX style dict
                 var appHomeHeadRibbon = {};
                 Object.assign(appHomeHeadRibbon, appHeadRibbon) // copy dict
-                appHomeHeadRibbon['animation'] = 'HomeFadeIn 1s';
-                appHomeHeadRibbon['-webkit-animation'] = 'HomeFadeIn 1s';
-                appHomeHeadRibbon['-moz-animatio'] = 'HomeFadeIn 1s';
-                appHomeHeadRibbon['-o-animation'] = 'HomeFadeIn 1s';
-                appHomeHeadRibbon['-ms-animation'] = 'HomeFadeIn 1s';
+                appHomeHeadRibbon['animation'] = 'HomeFadeIn 0.5s';
+                appHomeHeadRibbon['-webkit-animation'] = 'HomeFadeIn 0.5s';
+                appHomeHeadRibbon['-moz-animatio'] = 'HomeFadeIn 0.5s';
+                appHomeHeadRibbon['-o-animation'] = 'HomeFadeIn 0.5s';
+                appHomeHeadRibbon['-ms-animation'] = 'HomeFadeIn 0.5s';
 
                 return (
                     <div className="App-HomeRibbon" style={appHomeHeadRibbon}>
@@ -371,11 +371,11 @@ class App extends Component {
                 // Construct FX style dict
                 var appAboutUsHeadRibbon = {};
                 Object.assign(appAboutUsHeadRibbon, appHeadRibbon) // copy dict
-                appAboutUsHeadRibbon['animation'] = 'AboutUsFadeIn 1s';
-                appAboutUsHeadRibbon['-webkit-animation'] = 'AboutUsFadeIn 1s';
-                appAboutUsHeadRibbon['-moz-animatio'] = 'AboutUsFadeIn 1s';
-                appAboutUsHeadRibbon['-o-animation'] = 'AboutUsFadeIn 1s';
-                appAboutUsHeadRibbon['-ms-animation'] = 'AboutUsFadeIn 1s';
+                appAboutUsHeadRibbon['animation'] = 'AboutUsFadeIn 0.5s';
+                appAboutUsHeadRibbon['-webkit-animation'] = 'AboutUsFadeIn 0.5s';
+                appAboutUsHeadRibbon['-moz-animatio'] = 'AboutUsFadeIn 0.5s';
+                appAboutUsHeadRibbon['-o-animation'] = 'AboutUsFadeIn 0.5s';
+                appAboutUsHeadRibbon['-ms-animation'] = 'AboutUsFadeIn 0.5s';
 
                 return (
                     <div className="App-HomeRibbon" style={appAboutUsHeadRibbon}>
@@ -398,11 +398,11 @@ class App extends Component {
                 // Construct FX style dict
                 var appScheduleHeadRibbon = {};
                 Object.assign(appScheduleHeadRibbon, appHeadRibbon) // copy dict
-                appScheduleHeadRibbon['animation'] = 'ScheduleFadeIn 1s';
-                appScheduleHeadRibbon['-webkit-animation'] = 'ScheduleFadeIn 1s';
-                appScheduleHeadRibbon['-moz-animatio'] = 'ScheduleFadeIn 1s';
-                appScheduleHeadRibbon['-o-animation'] = 'ScheduleFadeIn 1s';
-                appScheduleHeadRibbon['-ms-animation'] = 'ScheduleFadeIn 1s';
+                appScheduleHeadRibbon['animation'] = 'ScheduleFadeIn 0.5s';
+                appScheduleHeadRibbon['-webkit-animation'] = 'ScheduleFadeIn 0.5s';
+                appScheduleHeadRibbon['-moz-animatio'] = 'ScheduleFadeIn 0.5s';
+                appScheduleHeadRibbon['-o-animation'] = 'ScheduleFadeIn 0.5s';
+                appScheduleHeadRibbon['-ms-animation'] = 'ScheduleFadeIn 0.5s';
 
                 return (
                     <div className="App-HomeRibbon" style={appScheduleHeadRibbon}>
@@ -418,11 +418,11 @@ class App extends Component {
                 // Construct FX style dict
                 var appGiftRegHeadRibbon = {};
                 Object.assign(appGiftRegHeadRibbon, appHeadRibbon) // copy dict
-                appGiftRegHeadRibbon['animation'] = 'GiftRegFadeIn 1s';
-                appGiftRegHeadRibbon['-webkit-animation'] = 'GiftRegFadeIn 1s';
-                appGiftRegHeadRibbon['-moz-animatio'] = 'GiftRegFadeIn 1s';
-                appGiftRegHeadRibbon['-o-animation'] = 'GiftRegFadeIn 1s';
-                appGiftRegHeadRibbon['-ms-animation'] = 'GiftRegFadeIn 1s';
+                appGiftRegHeadRibbon['animation'] = 'GiftRegFadeIn 0.5s';
+                appGiftRegHeadRibbon['-webkit-animation'] = 'GiftRegFadeIn 0.5s';
+                appGiftRegHeadRibbon['-moz-animatio'] = 'GiftRegFadeIn 0.5s';
+                appGiftRegHeadRibbon['-o-animation'] = 'GiftRegFadeIn 0.5s';
+                appGiftRegHeadRibbon['-ms-animation'] = 'GiftRegFadeIn 0.5s';
 
                 return (
                     <div className="App-HomeRibbon" style={appGiftRegHeadRibbon}>
