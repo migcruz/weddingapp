@@ -82,6 +82,7 @@ class GuestInfoModal extends React.Component {
 
         this.setState({ firstLastName: tempValue });
 		
+		return tempValue;
 	};
 
 	handlePut = () => {
@@ -164,12 +165,12 @@ class GuestInfoModal extends React.Component {
 		if (status) {
 			return status;
 		}
-		this.handleCleanup();
+		var firstLastName = this.handleCleanup();
 
 		//Hash the first and last name
         var crypto = require('crypto')
         var shasum = crypto.createHash('sha1')
-        shasum.update(this.state.firstLastName)
+        shasum.update(firstLastName)
         var hashToken = shasum.digest('hex')
 
 		const activeItem = { ...this.state.activeItem, 'token': hashToken };
