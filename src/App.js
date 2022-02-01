@@ -89,6 +89,11 @@ const appH2 = {
     transform: 'translate(-50%, -50%)', // keep it centered
 }
 
+const appP1 = {
+    fontSize:  window.screen.availHeight * 0.01,
+    color: 'white',
+}
+
 const appNavBar = {
     top: window.screen.availHeight * 0.05, 
     maxWidth: window.screen.availWidth, 
@@ -347,7 +352,7 @@ class App extends Component {
                 appHomeHeadRibbon['-webkit-animation'] = 'HomeFadeIn 0.5s';
                 appHomeHeadRibbon['-moz-animatio'] = 'HomeFadeIn 0.5s';
                 appHomeHeadRibbon['-o-animation'] = 'HomeFadeIn 0.5s';
-                appHomeHeadRibbon['-ms-animation'] = 'HomeFadeIn 0.5s';
+                appHomeHeadRibbon['-ms-animation'] = 'HomeFadeIn 0.5s'; // must be differently named FX or else they wont apply
 
                 return (
                     <div className="App-HomeRibbon" style={appHomeHeadRibbon}>
@@ -381,10 +386,10 @@ class App extends Component {
                     <div className="App-HomeRibbon" style={appAboutUsHeadRibbon}>
                         <div className="App-headribbonh1" style={appHeadRibbonH1}>
                             <Container text>
-                                <p style={{color: 'white'}}>
+                                <p style={appP1}>
                                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede link mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
                                 </p>
-                                <p style={{color: 'white'}}>
+                                <p style={appP1}>
                                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede link mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
                                 </p>
                             </Container>
@@ -407,7 +412,7 @@ class App extends Component {
                 return (
                     <div className="App-HomeRibbon" style={appScheduleHeadRibbon}>
                         <div className="App-headribbonh1" style={appHeadRibbonH1}>
-                            <h1 className="App-h2" style={appH2}>TBA. Please check back later!</h1>
+                            <h2 className="App-h2" style={appH2}>TBA. Please check back later!</h2>
                         </div>
                     </div>
                 );
@@ -427,7 +432,7 @@ class App extends Component {
                 return (
                     <div className="App-HomeRibbon" style={appGiftRegHeadRibbon}>
                         <div className="App-headribbonh1" style={appHeadRibbonH1}>
-                            <h1 className="App-h2" style={appH2}>Working on it!</h1>
+                            <h2 className="App-h2" style={appH2}>Due to us flying in for this wedding, it is difficult for us to transport gifts back home. If you would like to give us a gift, we would greatly appreciate it if you could please consider a cash gift instead. Thank you for understanding!</h2>
                         </div>
                     </div>
                 );

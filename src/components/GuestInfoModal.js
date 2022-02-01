@@ -156,6 +156,22 @@ class GuestInfoModal extends React.Component {
 			this.setState({ isPlusOneError: false });
 		}
 
+		// Verify phone
+		tempValue = this.state.activeItem.phone
+		if (tempValue === '') {
+			const activeItem = { ...this.state.activeItem, ['phone']: 'None' }; // if string is empty, error 400 occurs
+			this.setState({ activeItem });
+			status = true;
+		}
+
+		// Verify allergies
+		tempValue = this.state.activeItem.allergies
+		if (tempValue === '') {
+			const activeItem = { ...this.state.activeItem, ['allergies']: 'None' }; // if string is empty, error 400 occurs
+			this.setState({ activeItem });
+			status = true;
+		}
+
 		return status;
 	};
 
@@ -306,7 +322,7 @@ class GuestInfoModal extends React.Component {
 					autoFocus
 					margin="dense"
 					id="plusone"
-					label="*Your plus one (if none, put none)"
+					label="*Your plus one (if none, put none) OR the party you are arriving with"
 					type="text"
 					fullWidth
 					variant="standard"
@@ -322,7 +338,7 @@ class GuestInfoModal extends React.Component {
 					autoFocus
 					margin="dense"
 					id="plusone"
-					label="*Your plus one (if none, put none)"
+					label="*Your plus one (if none, put none) OR the party you are arriving with"
 					type="text"
 					fullWidth
 					variant="standard"
