@@ -387,10 +387,13 @@ class App extends Component {
                         <div className="App-headribbonh1" style={appHeadRibbonH1}>
                             <Container text>
                                 <p style={appP1}>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede link mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+                                    Miguel and Jessica met 10 years ago during an information session to join the Unmanned Aerial Vehicle engineering at SFU. As engineering nerds and UAV enthusiasts, Jessica and Miguel bonded as classmates, teammates, and friends. After many late nights studying and weekends spent working on the UAV, it was no surprise to Jessica when Miguel finally asked her to be his girlfriend. She, of course, enthusiastically accepted.
                                 </p>
                                 <p style={appP1}>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede link mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+                                    There have been many great achievements that we have shared over our many years together. From graduating University to starting our first jobs, we are proud to have achieved these goals as a team. Though the road in life is never easy, we couldn’t imagine facing the challenges of life without each other. This is how we know we are truly meant to be. 
+                                </p>
+                                <p style={appP1}>
+                                    We are so excited to be taking this next step in our lives and in our commitment to each other by getting married. Please join us on August 20th, 2022 to witness and celebrate our marriage. We would be so thankful to have you there on this special day.
                                 </p>
                             </Container>
                         </div>
@@ -432,7 +435,7 @@ class App extends Component {
                 return (
                     <div className="App-HomeRibbon" style={appGiftRegHeadRibbon}>
                         <div className="App-headribbonh1" style={appHeadRibbonH1}>
-                            <h2 className="App-h2" style={appH2}>Due to us flying in for this wedding, it is difficult for us to transport gifts back home. If you would like to give us a gift, we would greatly appreciate it if you could please consider a cash gift instead. Thank you for understanding!</h2>
+                            <h2 className="App-h2" style={appH2}>Due to us flying in from out of town for the wedding, it is difficult for us to transport gifts back home. If you would like to give us a gift, we would greatly appreciate it if you could please consider a cash gift instead. Thank you for understanding!</h2>
                         </div>
                     </div>
                 );
