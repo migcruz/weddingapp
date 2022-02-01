@@ -174,12 +174,23 @@
 }
 
 /* fonts */
-@import url(//db.onlinewebfonts.com/c/25f19424a5fb75023182a80c61dffc37?family=DomLovesMary+Pro);
+/* @import url(//db.onlinewebfonts.com/c/25f19424a5fb75023182a80c61dffc37?family=DomLovesMary+Pro);
 
 @font-face {
   font-family: "DomLovesMary Pro";
   src: url("//db.onlinewebfonts.com/t/25f19424a5fb75023182a80c61dffc37.eot");
   src: url("//db.onlinewebfonts.com/t/25f19424a5fb75023182a80c61dffc37.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/25f19424a5fb75023182a80c61dffc37.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/25f19424a5fb75023182a80c61dffc37.woff") format("woff"), url("//db.onlinewebfonts.com/t/25f19424a5fb75023182a80c61dffc37.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/25f19424a5fb75023182a80c61dffc37.svg#DomLovesMary Pro") format("svg");
-} 
+}  */
 
+@font-face {
+  font-family: 'DomLovesMary Pro';
+  font-style: normal;
+  src: url('fonts/DomLovesMaryPro.eot'); /* IE9 Compat Modes */
+  src: local('DomLovesMary Pro'), local('DomLovesMaryPro'),
+       url('fonts/DomLovesMaryPro.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/DomLovesMaryPro.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/DomLovesMaryPro.woff') format('woff'), /* Modern Browsers */
+       url('fonts/DomLovesMaryPro.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('fonts/DomLovesMaryPro.svg#DomLovesMaryPro') format('svg'); /* Legacy iOS */
+}
 /* vh is percentage of browser vertical height this element will take up */
