@@ -25,6 +25,11 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
+import ListItemText from '@mui/material/ListItemText';
+
+const guestInfoModalP1 = {
+    color: 'green',
+}
 
 class GuestInfoModal extends React.Component {
 
@@ -441,14 +446,30 @@ class GuestInfoModal extends React.Component {
 				<DialogTitle>Thank you! Your information has been submitted.</DialogTitle>
 				<DialogContent dividers>
 					<Box sx={{ m: 2 }}>
-						<DialogContentText sx={{ color: 'green' }}>
-							Success! Submitted information for guest: {this.state.activeItem.firstName} {this.state.activeItem.lastName}
+						<DialogContentText sx={{ color: 'black' }}>
+							<p style={guestInfoModalP1}>
+								Success! Submitted information for guest: {this.state.activeItem.firstName} {this.state.activeItem.lastName}
+							</p>
+							<ListItemText primary="RSVP" secondary={this.state.activeItem.rsvp ? "Yes" : "No"} />
+							<ListItemText primary="First Name" secondary={this.state.activeItem.firstName} />
+							<ListItemText primary="Last Name" secondary={this.state.activeItem.lastName} />
+							<ListItemText primary="Email" secondary={this.state.activeItem.email} />
+							<ListItemText primary="Plus one / party" secondary={this.state.activeItem.plusone} />
+							<ListItemText primary="Phone" secondary={this.state.activeItem.phone} />
+							<ListItemText primary="Allergies" secondary={this.state.activeItem.allergies} />
+							<ListItemText primary="Vegan" secondary={this.state.activeItem.vegan ? "Yes" : "No"} />
+							<ListItemText primary="Vegetarian" secondary={this.state.activeItem.vegetarian ? "Yes" : "No"} />
 						</DialogContentText>
 					</Box>
 					<Divider variant="middle" />
 					<Box sx={{ m: 2 }}>
 						<DialogContentText sx={{ color: 'black' }}>
-							We look forward to seeing you soon {this.state.activeItem.firstName}! Please contact miguel.jessica.shared@gmail.com if you require any assistance.
+							<p>
+								We look forward to seeing you soon {this.state.activeItem.firstName}! If you need to update your information, just click the RSVP button again.
+							</p>
+							<p>
+								Please contact miguel.jessica.shared@gmail.com if you require any assistance.
+							</p>
 						</DialogContentText>
 					</Box>
 				</DialogContent>
