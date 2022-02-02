@@ -16,4 +16,4 @@ class GuestlistSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Guestlist
-        fields = ('id', 'token', 'firstName', 'lastName', 'email', 'phone', 'plusone', 'allergies', 'rsvp', 'vegan', 'vegetarian', 'url')
+        fields = ('id', 'token', 'firstName', 'lastName', 'email', 'phone', 'plusone', 'allergies', 'rsvp', 'vegan', 'vegetarian', 'newGuest', 'url')

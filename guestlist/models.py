@@ -13,6 +13,7 @@ class Guestlist(models.Model):
     rsvp = models.BooleanField(default=False)
     vegan = models.BooleanField(default=False)
     vegetarian = models.BooleanField(default=False)
+    newGuest = models.BooleanField(default=False)
 
     def _str_(self):
         return self.token
