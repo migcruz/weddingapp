@@ -70,7 +70,7 @@ const appHeadRibbonH2 = {
 }
 
 const appH1 = {
-    fontSize:  window.screen.availHeight * 0.15,
+    fontSize:  window.screen.height * 0.15,
     color: 'white',
     fontWeight: 'lighter',
     position: 'absolute',
@@ -80,7 +80,7 @@ const appH1 = {
 }
 
 const appH2 = {
-    fontSize:  window.screen.availHeight * 0.027,
+    fontSize:  window.screen.height * 0.027,
     color: 'white',
     fontWeight: 'lighter',
     position: 'absolute',
@@ -90,7 +90,7 @@ const appH2 = {
 }
 
 const appP1 = {
-    fontSize:  `${window.screen.availHeight * 0.01}px`,
+    fontSize:  `${window.screen.height * 0.013}px`,
     color: 'white',
 }
 
@@ -124,7 +124,7 @@ const HeaderButton = styled(Button)({
     // position: 'relative', //use for multiple items in div or else they will stack
     boxShadow: 'none',
     textTransform: 'none',
-    fontSize: window.screen.availHeight * 0.019,
+    fontSize: window.screen.height * 0.019,
     fontWeight: '100',
     color: 'hsla(0, 0%, 100%, 1)', //Font color
     paddingTop: window.screen.availHeight * 0.02,

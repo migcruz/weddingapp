@@ -20,7 +20,7 @@ const NavBarTab = styled(Tab)({
     paddingBottom: window.screen.availHeight * 0.01,
     paddingLeft: window.screen.availHeight * 0.04,
     paddingRight:  window.screen.availHeight * 0.04,
-    fontSize: window.screen.availHeight * 0.01,
+    fontSize: window.screen.height * 0.01,
     fontWeight: '100',
     '&:hover': {
         backgroundColor: 'hsla(0, 0%, 100%, 0.50)',
