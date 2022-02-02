@@ -90,7 +90,7 @@ const appH2 = {
 }
 
 const appP1 = {
-    fontSize:  window.screen.availHeight * 0.01,
+    fontSize:  `${window.screen.availHeight * 0.01}px`,
     color: 'white',
 }
 
