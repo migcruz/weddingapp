@@ -90,7 +90,7 @@ const appH2 = {
 }
 
 const appP1 = {
-    fontSize:  `${window.screen.height * 0.015}px`,
+    fontSize:  `${window.screen.height * 0.0155}px`,
     color: 'white',
 }
 
@@ -435,7 +435,7 @@ class App extends Component {
                 return (
                     <div className="App-HomeRibbon" style={appGiftRegHeadRibbon}>
                         <div className="App-headribbonh1" style={appHeadRibbonH1}>
-                            <h2 className="App-h2" style={appH2}>Due to us flying in from out of town for the wedding, it is difficult for us to transport gifts back home. If you would like to give us a gift, we would greatly appreciate it if you could please consider a cash gift instead. Thank you for understanding!</h2>
+                            <h2 className="App-h2" style={appH2}>Since we will be flying in from out of town, it will be difficult for us to transport gifts back home after the wedding. If you would like to give us a gift, we would greatly appreciate it if you could please consider a cash gift instead. Thank you for understanding!</h2>
                         </div>
                     </div>
                 );
