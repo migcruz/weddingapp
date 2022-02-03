@@ -122,10 +122,10 @@ class GuestInfoModal extends React.Component {
 		var isLastNameErrorTemp = true;
 		var isEmailErrorTemp = true;
 		var isPlusOneErrorTemp = true;
-		var emailTemp;
-		var plusoneTemp;
-		var phoneTemp;
-		var allergiesTemp;
+		var emailTemp = this.state.activeItem.email;
+		var plusoneTemp = this.state.activeItem.plusone;
+		var phoneTemp = this.state.activeItem.phone;
+		var allergiesTemp = this.state.activeItem.allergies;
 
 		// Verify first name
 		var tempValue = this.state.activeItem.firstName.replace(/\s+/g, '')  //remove white spaces
