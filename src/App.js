@@ -464,7 +464,7 @@ class App extends Component {
                     />
                 </div>
                 {this.renderRibbonContent()}
-                <div className="row ">
+                {/* <div className="row ">
                     <div className="col-md-6 col-sm-10 mx-auto p-0">
                         <div className="card p-3">
                             {this.renderTabList()}
@@ -473,7 +473,7 @@ class App extends Component {
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 {this.state.guestInfoModalShow ? (
                     <GuestInfoModal
                         activeItem={this.state.activeItem}
