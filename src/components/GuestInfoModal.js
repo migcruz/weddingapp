@@ -84,10 +84,8 @@ class GuestInfoModal extends React.Component {
         const lastName = tempValue.toLowerCase();
 
 		tempValue = firstName + lastName;
-
-        this.setState({ firstLastName: tempValue });
 		
-		return tempValue;
+		return tempValue; // cant wait for set state to finish since
 	};
 
 	handlePut = () => {
@@ -120,62 +118,72 @@ class GuestInfoModal extends React.Component {
 	handleTextFieldVerify = () => {
 
 		var status = false;
+		var isFirstNameErrorTemp = true;
+		var isLastNameErrorTemp = true;
+		var isEmailErrorTemp = true;
+		var isPlusOneErrorTemp = true;
+		var emailTemp;
+		var plusoneTemp;
+		var phoneTemp;
+		var allergiesTemp;
 
 		// Verify first name
 		var tempValue = this.state.activeItem.firstName.replace(/\s+/g, '')  //remove white spaces
 		if (tempValue === '') {
-			this.setState({ isFirstNameError: true });
+			isFirstNameErrorTemp = true;
 			status = true;
 		}
 		else {
-			this.setState({ isFirstNameError: false });
+			isFirstNameErrorTemp = false;
 		}
 		
 		// Verify last name
 		tempValue = this.state.activeItem.lastName.replace(/\s+/g, '')  //remove white spaces
 		if (tempValue === '') {
-			this.setState({ isLastNameError: true });
+			isLastNameErrorTemp = true;
 			status = true;
 		}
 		else {
-			this.setState({ isLastNameError: false });
+			isLastNameErrorTemp = false;
 		}
 
 		// Verify email
 		tempValue = this.state.activeItem.email.replace(/\s+/g, '')  //remove white spaces
 		if (tempValue === '') {
-			this.setState({ isEmailError: true });
+			// emailTemp = 'None'; // if string is empty, error 400 occurs
+			isEmailErrorTemp = true;
 			status = true;
 		}
 		else {
-			this.setState({ isEmailError: false });
+			isEmailErrorTemp = false;
 		}
 
 		// Verify plusone
 		tempValue = this.state.activeItem.plusone.replace(/\s+/g, '')  //remove white spaces
 		if (tempValue === '') {
-			this.setState({ isPlusOneError: true });
+			// plusoneTemp = 'None';
+			isPlusOneErrorTemp = true;
 			status = true;
 		}
 		else {
-			this.setState({ isPlusOneError: false });
+			isPlusOneErrorTemp = false;
 		}
 
-		// Verify phone
+		// Verify phone, no need to error out
 		tempValue = this.state.activeItem.phone
 		if (tempValue === '') {
-			const activeItem = { ...this.state.activeItem, ['phone']: 'None' }; // if string is empty, error 400 occurs
-			this.setState({ activeItem });
-			status = true;
+			phoneTemp = 'None'; // if string is empty, error 400 occurs
 		}
 
-		// Verify allergies
+		// Verify allergies, no need to error out
 		tempValue = this.state.activeItem.allergies
 		if (tempValue === '') {
-			const activeItem = { ...this.state.activeItem, ['allergies']: 'None' }; // if string is empty, error 400 occurs
-			this.setState({ activeItem });
-			status = true;
+			allergiesTemp = 'None'; // if string is empty, error 400 occurs
 		}
+
+		const activeItem = { ...this.state.activeItem, 'email': emailTemp, 'plusone': plusoneTemp, 'phone': phoneTemp, 'allergies': allergiesTemp};
+
+		this.setState({ activeItem: activeItem, isFirstNameError: isFirstNameErrorTemp, isLastNameError: isLastNameErrorTemp, isEmailError: isEmailErrorTemp, isPlusOneError: isPlusOneErrorTemp });
 
 		return status;
 	};
@@ -186,29 +194,33 @@ class GuestInfoModal extends React.Component {
 		if (status) {
 			return status;
 		}
-		var firstLastName = this.handleCleanup();
+		var firstLastNameTemp = this.handleCleanup();
 
-		//Hash the first and last name
-        var crypto = require('crypto')
-        var shasum = crypto.createHash('sha1')
-        shasum.update(firstLastName)
-        var hashToken = shasum.digest('hex')
-
-		const activeItem = { ...this.state.activeItem, 'token': hashToken };
-
-		axios
-            // .get("http://localhost:8000/api/guestlist/ABCD4/")
-            // Because of proxy in package.json, command be shorten as follows:
-            .get(`/api/guestlist/${hashToken}/`)
-            .then(res => this.setState({ activeItem: activeItem, errorMessage: '', isError: false }, () => {
-				this.handlePut();
-            }))
-            .catch(err => this.setState({ activeItem: activeItem, errorMessage: err.toJSON().message }, () => {
-                console.log(this.state.errorMessage);
-
-				// User not found in db, so post a new entry
-				this.handlePost();
-            }))
+		// async callback otherwise handleCleanup executes before setstate finishes
+        this.setState({ firstLastName: firstLastNameTemp }, () => {  // random set state just so we can do callback to ensure that text field strings have been saved to active item before doing axios calls
+			//Hash the first and last name
+			var crypto = require('crypto')
+			var shasum = crypto.createHash('sha1')
+			shasum.update(this.state.firstLastName)
+			var hashToken = shasum.digest('hex')
+	
+			const activeItem = { ...this.state.activeItem, 'token': hashToken };
+			console.log('LOLLL: ', this.state.activeItem);
+	
+			axios
+				// .get("http://localhost:8000/api/guestlist/ABCD4/")
+				// Because of proxy in package.json, command be shorten as follows:
+				.get(`/api/guestlist/${hashToken}/`)
+				.then(res => this.setState({ activeItem: activeItem, errorMessage: '', isError: false }, () => {
+					this.handlePut();
+				}))
+				.catch(err => this.setState({ activeItem: activeItem, errorMessage: err.toJSON().message }, () => {
+					console.log(this.state.errorMessage);
+	
+					// User not found in db, so post a new entry
+					this.handlePost();
+				}))
+		});
 	};
 
 	renderFirstName = () => {
