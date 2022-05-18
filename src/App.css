@@ -22,7 +22,7 @@
   font-size: 4rem;
 }
 
-.App-headribbonh1 {
+/* .App-headribbonh1 {
   position: absolute;
 }
 
@@ -40,7 +40,7 @@
 
 .App-headribbonimage {
   position: absolute;
-}
+} */
 
 /* components */
 
@@ -53,6 +53,10 @@
 }
 
 .App-h2 {
+  font-family: "Wild and Folk";
+}
+
+.App-p1{
   font-family: "Times New Roman";
 }
 
@@ -104,6 +108,32 @@
 }
 
 @-ms-keyframes AboutUsFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+/* FAQ FX */
+@keyframes FAQFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes FAQFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes FAQFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes FAQFadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes FAQFadeIn {
   0% {opacity:0;}
   100% {opacity:1;}
 }
@@ -192,5 +222,17 @@
        url('fonts/DomLovesMaryPro.woff') format('woff'), /* Modern Browsers */
        url('fonts/DomLovesMaryPro.ttf') format('truetype'), /* Safari, Android, iOS */
        url('fonts/DomLovesMaryPro.svg#DomLovesMaryPro') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Wild and Folk';
+  font-style: normal;
+  src: url('fonts/WildandFolkFont.eot'); /* IE9 Compat Modes */
+  src: local('Wild and Folk'), local('WildandFolkFont'),
+       url('fonts/WildandFolkFont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/WildandFolkFont.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/WildandFolkFont.woff') format('woff'), /* Modern Browsers */
+       url('fonts/WildandFolkFont.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('fonts/WildandFolkFont.svg#WildandFolkFont') format('svg'); /* Legacy iOS */
 }
 /* vh is percentage of browser vertical height this element will take up */

@@ -1,11 +1,17 @@
 import React, { Component } from "react";
+import axios from "axios";
+
+import { Image, Item, Grid, Header } from "semantic-ui-react";
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+
 import GuestInfoModal from "./components/GuestInfoModal";
 import TokenModal from "./components/TokenModal";
 import NavBar from "./components/NavBar";
-import axios from "axios";
-import { Image, Item, Grid, Container, Header } from "semantic-ui-react";
-import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
+import SchedulePage from "./pages/SchedulePage/SchedulePage";
+import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
+import FaqPage from "./pages/FaqPage/FaqPage";
+import GiftRegistryPage from "./pages/GiftRegistryPage/GiftRegistryPage";
 
 import './App.css';
 
@@ -89,11 +95,6 @@ const appH2 = {
     transform: 'translate(-50%, -50%)', // keep it centered
 }
 
-const appP1 = {
-    fontSize:  `${window.screen.height * 0.0155}px`,
-    color: 'white',
-}
-
 const appNavBar = {
     top: window.screen.availHeight * 0.05, 
     maxWidth: window.screen.availWidth, 
@@ -136,9 +137,7 @@ const HeaderButton = styled(Button)({
     lineHeight: 1.5,
     backgroundColor: 'hsla(0, 0%, 100%, 0.15)',
     borderColor: 'hsla(0, 0%, 100%, 1)',
-    // fontFamily: [
-    //     'Times New Roman',
-    // ].join(','),
+    fontFamily: 'Wild and Folk',
     '&:hover': {
         backgroundColor: 'hsla(0, 50%, 70%, 0.7)',
         borderColor: 'hsla(0, 0%, 100%, 1)',
@@ -385,24 +384,30 @@ class App extends Component {
 
                 return (
                     <div className="App-HomeRibbon" style={appAboutUsHeadRibbon}>
-                        <div className="App-headribbonh1" style={appHeadRibbonH1}>
-                            <Container text>
-                                <p style={appP1}>
-                                    Miguel and Jessica met 10 years ago during an information session to join the Unmanned Aerial Vehicle engineering at SFU. As engineering nerds and UAV enthusiasts, Jessica and Miguel bonded as classmates, teammates, and friends. After many late nights studying and weekends spent working on the UAV, it was no surprise to Jessica when Miguel finally asked her to be his girlfriend. She, of course, enthusiastically accepted.
-                                </p>
-                                <p style={appP1}>
-                                    There have been many great achievements that we have shared over our many years together. From graduating University to starting our first jobs, we are proud to have achieved these goals as a team. Though the road in life is never easy, we couldn’t imagine facing the challenges of life without each other. This is how we know we are truly meant to be. 
-                                </p>
-                                <p style={appP1}>
-                                    We are so excited to be taking this next step in our lives and in our commitment to each other by getting married. Please join us on August 20th, 2022 to witness and celebrate our marriage. We would be so thankful to have you there on this special day.
-                                </p>
-                            </Container>
-                        </div>
+                        <AboutUsPage/>
+                    </div>
+                );
+
+            // FAQ
+            case 2:
+
+                // Construct FX style dict
+                var appFaqHeadRibbon = {};
+                Object.assign(appFaqHeadRibbon, appHeadRibbon) // copy dict
+                appFaqHeadRibbon['animation'] = 'FAQFadeIn 0.5s';
+                appFaqHeadRibbon['-webkit-animation'] = 'FAQFadeIn 0.5s';
+                appFaqHeadRibbon['-moz-animatio'] = 'FAQFadeIn 0.5s';
+                appFaqHeadRibbon['-o-animation'] = 'FAQFadeIn 0.5s';
+                appFaqHeadRibbon['-ms-animation'] = 'FAQFadeIn 0.5s';
+
+                return (
+                    <div className="App-HomeRibbon" style={appFaqHeadRibbon}>
+                        <FaqPage/>
                     </div>
                 );
             
             // Schedule
-            case 2:
+            case 3:
 
                 // Construct FX style dict
                 var appScheduleHeadRibbon = {};
@@ -415,14 +420,12 @@ class App extends Component {
 
                 return (
                     <div className="App-HomeRibbon" style={appScheduleHeadRibbon}>
-                        <div className="App-headribbonh1" style={appHeadRibbonH1}>
-                            <h2 className="App-h2" style={appH2}>TBA. Please check back later!</h2>
-                        </div>
+                        <SchedulePage/>
                     </div>
                 );
             
             // Gift Registry
-            case 3:
+            case 4:
 
                 // Construct FX style dict
                 var appGiftRegHeadRibbon = {};
@@ -435,9 +438,7 @@ class App extends Component {
 
                 return (
                     <div className="App-HomeRibbon" style={appGiftRegHeadRibbon}>
-                        <div className="App-headribbonh1" style={appHeadRibbonH1}>
-                            <h2 className="App-h2" style={appH2}>Since we will be flying in from out of town, it will be difficult for us to transport gifts back home after the wedding. If you would like to give us a gift, we would greatly appreciate it if you could please consider a cash gift instead. Thank you for understanding!</h2>
-                        </div>
+                        <GiftRegistryPage/>
                     </div>
                 );
         }

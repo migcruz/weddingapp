@@ -15,6 +15,7 @@ const NavBarBox = styled(Box)({
 });
 
 const NavBarTab = styled(Tab)({
+    fontFamily: 'Wild and Folk',
     color: 'hsla(0, 0%, 100%, 1)', //Font color
     paddingTop: window.screen.availHeight * 0.01,
     paddingBottom: window.screen.availHeight * 0.01,
@@ -63,6 +64,7 @@ class NavBar extends React.Component {
                 <Tabs value={this.state.index} onChange={this.handleChange} indicatorColor='' centered>
                 <NavBarTab label="Home" />
                 <NavBarTab label="About us" />
+                <NavBarTab label="FAQ" />
                 <NavBarTab label="Schedule" />
                 <NavBarTab label="Gift Registry" />
                 </Tabs>
