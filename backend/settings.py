@@ -90,12 +90,20 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+    # 'new': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'weddingapppulltest4',
+    #     'USER': 'miguel',
+    #     'PASSWORD': 'hehehehe',
+    #     'HOST': 'localhost',
+    #     'PORT': '',
+    # }
+}
 
 # DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 

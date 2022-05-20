@@ -176,6 +176,7 @@ class App extends Component {
                 vegan: false,
                 vegetarian: false,
                 newGuest: true,
+                hasResponded: false,
                 url: "",
             },
             guestList: [],
@@ -305,7 +306,7 @@ class App extends Component {
     };
 
     createItem = () => {
-        const item = { id: "", token: "", firstName: "", lastName: "", email: "", phone: "", plusone: "", allergies: "", rsvp: false, vegan: false, vegetarian: false, newGuest: true, url: "" };
+        const item = { id: "", token: "", firstName: "", lastName: "", email: "", phone: "", plusone: "", allergies: "", rsvp: false, vegan: false, vegetarian: false, newGuest: true, hasResponded: false, url: "" };
         this.setState({ activeItem: item, guestInfoModalShow: !this.state.guestInfoModalShow });
     };
 

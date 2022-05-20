@@ -204,7 +204,7 @@ class GuestInfoModal extends React.Component {
 			shasum.update(this.state.firstLastName)
 			var hashToken = shasum.digest('hex')
 	
-			const activeItem = { ...this.state.activeItem, 'token': hashToken };
+			const activeItem = { ...this.state.activeItem, 'token': hashToken, 'hasResponded': true };
 			console.log('LOLLL: ', this.state.activeItem);
 	
 			axios

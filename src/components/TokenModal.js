@@ -40,6 +40,7 @@ class TokenModal extends React.Component {
                 vegan: false,
                 vegetarian: false,
 				newGuest: true,
+				hasResponded: false,
                 url: "",
             },
 			firstName: '',
